@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,10 +18,15 @@
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" href='{% static "css/main.css" %}' />
+
     <title>auctionPal</title>
   </head>
   <body>
-    <h1 class="container">auctionPal! Hello!</h1>
+    <div class="jumbotron">
+      <h1>auctionPal</h1>
+      <img src="{% static 'img/auction.png' %}" />
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
