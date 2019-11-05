@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-4">
+      <h1>Register form:</h1>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-info mt-2">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
