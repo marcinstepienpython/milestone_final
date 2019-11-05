@@ -19,15 +19,21 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 
+from artifacts.views import ArtifactListView, artifact_list_view
+
 from .views import index, login_page, register_page
 
 urlpatterns = [
     url(r'^$', index),
     url(r'login/$', login_page),
     url(r'register/$', register_page),
+    # ModelListView as a callable item
+    url(r'artifacts/$', ArtifactListView.as_view()),
     url(r'^admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns = urlpatterns + \
+        static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns = urlpatterns + \
+        static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

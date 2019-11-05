@@ -16,6 +16,9 @@ class Artifact(models.Model):
     seller = models.ForeignKey(User)
     sold = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.title
+
 
 class Bid(models.Model):
     auction = models.ForeignKey(Artifact)
