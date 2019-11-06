@@ -1,3 +1,4 @@
+{% extends 'base.html' %} {% block content%}
 <div class="container">
   <div class="jumbotron">
     <h1>{{ artifact.title }}</h1>
@@ -18,3 +19,4 @@
   <img src="{{ artifact.image.url }}" class="img-fluid" />
   {% endif %}
 </div>
+{% endblock %}

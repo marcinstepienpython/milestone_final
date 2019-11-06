@@ -1,7 +1,11 @@
-<!-- {{ object_list }} -->
-<h1>List of artifacts:</h1>
-{% for artifact in object_list %}
-<p>
-  <a href="{{ artifact.get_url }}">{{ artifact.title }}</a>
-</p>
-{%endfor%}
+{% extends 'base.html' %} {% block content%}
+<div class="container">
+  <h1>List of artifacts:</h1>
+  {% for artifact in object_list %}
+  <p>
+    <a href="{{ artifact.get_url }}">{{ artifact.title }}</a>
+  </p>
+
+  {%endfor%}
+</div>
+{% endblock %}
