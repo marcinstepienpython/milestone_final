@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 def get_filename_ext(filepath):
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
@@ -18,17 +19,39 @@ def get_filename_ext(filepath):
 def upload_image_path(instance, filename):
     new_filename = random.randint(1, 39999)
     name, ext = get_filename_ext(filename)
-    final_filename = '{new_filename}{ext}'.format(new_filename=new_filename, ext=ext)
+    final_filename = '{new_filename}{ext}'.format(
+        new_filename=new_filename, ext=ext)
     return "artifacts/{new_filename}/{final_filename}".format(new_filename=new_filename, final_filename=final_filename)
 
 
+class ArtifactQuerySet(models.query.QuerySet):
+    def featured(self):
+        return self.filter(featured=True)
+
+
 class ArtifactManager(models.Manager):
+    # models manager
+
+    # def sold(self):
+    #     return self.filter(sold=False)
+
+    def get_queryset(self):
+        return ArtifactQuerySet(self.model, using=self._db)
+
+    # def all(self):
+    #     return self.get_queryset().sold()
+
+    # featured artifacts (where featured==True)
+    def features(self):
+        return self.get_queryset().featured()
+    # get artifact by id
 
     def get_by_id(self, id):
         qs = self.get_queryset().filter(id=id)
         if qs.count() == 1:
             return qs.first()
         return None
+
 
 class Artifact(models.Model):
     title = models.CharField(max_length=120)
@@ -38,7 +61,11 @@ class Artifact(models.Model):
     deadline = models.DateTimeField()
     seller = models.ForeignKey(User)
     sold = models.BooleanField(default=False)
-    image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+    image = models.ImageField(
+        upload_to=upload_image_path, null=True, blank=True)
+    year = models.CharField(max_length=120, default='unknown')
+    origin = models.CharField(max_length=120, default='unknown')
+    featured = models.BooleanField(default=False)
 
     objects = ArtifactManager()
 

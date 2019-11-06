@@ -8,6 +8,22 @@ from .models import Artifact
 # Create your views here.
 
 
+class ArtifactFeaturedListView(ListView):
+    template_name = 'artifacts/list.html'
+
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Artifact.objects.all().featured()
+
+
+class ArtifactFeaturedDetailView(DetailView):
+    template_name = 'artifacts/featured-details.html'
+
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Artifact.objects.all().featured()
+
+
 class ArtifactListView(ListView):
     template_name = 'artifacts/list.html'
 
