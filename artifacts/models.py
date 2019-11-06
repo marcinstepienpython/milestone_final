@@ -70,6 +70,10 @@ class Artifact(models.Model):
     featured = models.BooleanField(default=False)
 
     objects = ArtifactManager()
+    
+    def get_url(self):
+        return '/artifacts/{pk}/'.format(pk=self.pk)
+
 
     def __str__(self):
         return self.title

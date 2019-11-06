@@ -1,5 +1,7 @@
 <!-- {{ object_list }} -->
 <h1>List of artifacts:</h1>
 {% for artifact in object_list %}
-<p>{{ artifact.title }}</p>
+<p>
+  <a href="{{ artifact.get_url }}">{{ artifact.title }}</a>
+</p>
 {%endfor%}
