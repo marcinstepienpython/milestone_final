@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 
-from artifacts.views import ArtifactListView, artifact_list_view
+from artifacts.views import ArtifactListView, ArtifactDetailView
 
 from .views import index, login_page, register_page
 
@@ -29,6 +29,9 @@ urlpatterns = [
     url(r'register/$', register_page),
     # ModelListView as a callable item
     url(r'artifacts/$', ArtifactListView.as_view()),
+    # Checking the artifact primary key
+    url(r'artifacts/(?P<pk>\d+)/$', ArtifactDetailView.as_view()),
+    # Admin url
     url(r'^admin/', admin.site.urls),
 ]
 
