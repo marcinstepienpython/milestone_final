@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
+
 import random
 import os
 from django.db import models
@@ -19,6 +21,15 @@ def upload_image_path(instance, filename):
     final_filename = '{new_filename}{ext}'.format(new_filename=new_filename, ext=ext)
     return "artifacts/{new_filename}/{final_filename}".format(new_filename=new_filename, final_filename=final_filename)
 
+
+class ArtifactManager(models.Manager):
+
+    def get_by_id(self, id):
+        qs = self.get_queryset().filter(id=id)
+        if qs.count() == 1:
+            return qs.first()
+        return None
+
 class Artifact(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField()
@@ -28,6 +39,8 @@ class Artifact(models.Model):
     seller = models.ForeignKey(User)
     sold = models.BooleanField(default=False)
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+
+    objects = ArtifactManager()
 
     def __str__(self):
         return self.title
