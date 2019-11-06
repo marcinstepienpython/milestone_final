@@ -56,6 +56,7 @@ class ArtifactManager(models.Manager):
 
 class Artifact(models.Model):
     title = models.CharField(max_length=120)
+    slug = models.SlugField(blank=True)
     description = models.TextField()
     min_price = models.DecimalField(decimal_places=2, max_digits=20, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=20, null=True)
