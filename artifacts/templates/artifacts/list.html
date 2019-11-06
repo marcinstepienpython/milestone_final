@@ -1,11 +1,26 @@
 {% extends 'base.html' %} {% block content%}
 <div class="container">
   <h1>List of artifacts:</h1>
-  {% for artifact in object_list %}
-  <p>
-    <a href="{{ artifact.get_url }}">{{ artifact.title }}</a>
-  </p>
-
-  {%endfor%}
+  <div class="row justify-content-around">
+    {% for artifact in object_list %}
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        {% if artifact.image %}
+        <img src="{{ artifact.image.url }}" class="card-img-top" alt="..." />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ artifact.title }}</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="{{ artifact.get_url }}" class="btn btn-primary"
+            >Go somewhere</a
+          >
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
 </div>
 {% endblock %}
