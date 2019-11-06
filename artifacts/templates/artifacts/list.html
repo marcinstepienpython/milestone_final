@@ -11,12 +11,9 @@
         <div class="card-body">
           <h5 class="card-title">{{ artifact.title }}</h5>
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {{ artifact.description }}
           </p>
-          <a href="{{ artifact.get_url }}" class="btn btn-primary"
-            >Go somewhere</a
-          >
+          <a href="{{ artifact.get_url }}" class="btn btn-primary">Details</a>
         </div>
       </div>
     </div>
