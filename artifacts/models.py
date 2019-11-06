@@ -28,18 +28,19 @@ class ArtifactQuerySet(models.query.QuerySet):
     def featured(self):
         return self.filter(featured=True)
 
+    def sold(self):
+        return self.filter(sold=False)
 
 class ArtifactManager(models.Manager):
     # models manager
 
-    # def sold(self):
-    #     return self.filter(sold=False)
+
 
     def get_queryset(self):
         return ArtifactQuerySet(self.model, using=self._db)
 
-    # def all(self):
-    #     return self.get_queryset().sold()
+    def all(self):
+        return self.get_queryset().sold()
 
     # featured artifacts (where featured==True)
     def features(self):
