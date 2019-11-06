@@ -1,5 +1,13 @@
+{% url 'index' as index_url %} {% url 'artifacts' as artifacts_url %}
+<!-- login -->
+{% url 'login' as login_url %} {% url 'register' as register_url %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{% url 'index' %}">aPal</a>
+  <a
+    class="navbar-brand {% if request.path == index_url %} active {% endif %}"
+    href="{{ index_url }}"
+    >aPal</a
+  >
   <button
     class="navbar-toggler"
     type="button"
@@ -13,19 +21,27 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'index' %}"
+      <li
+        class="nav-item {% if request.path == index_url %} active {% endif %}"
+      >
+        <a class="nav-link " href="{{ index_url }}"
           >Home <span class="sr-only">(current)</span></a
         >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'artifacts' %}">Artifacts</a>
+      <li
+        class="nav-item {% if request.path == artifacts_url %} active {% endif %}"
+      >
+        <a class="nav-link " href="{{ artifacts_url }}">Artifacts</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      <li
+        class="nav-item {% if request.path == login_url %} active {% endif %}"
+      >
+        <a class="nav-link" href="{{ login_url }}">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      <li
+        class="nav-item {% if request.path == register_url %} active {% endif %}"
+      >
+        <a class="nav-link" href="{{ register_url }}">Register</a>
       </li>
     </ul>
   </div>
