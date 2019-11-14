@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 from artifacts.views import ArtifactListView, ArtifactDetailView, ArtifactFeaturedListView, ArtifactFeaturedDetailView
@@ -33,6 +33,7 @@ urlpatterns = [
     # Checking the artifact primary key
     url(r'artifacts/(?P<pk>\d+)/$', ArtifactDetailView.as_view()),
     url(r'featured/(?P<pk>\d+)/$', ArtifactFeaturedDetailView.as_view()),
+    url(r'search/', include("search.urls", namespace='search')),
     # Admin url
     url(r'^admin/', admin.site.urls),
 ]
