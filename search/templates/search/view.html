@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content%}
+<div class="container">
+  <h1>List of artifacts:</h1>
+  <div class="row justify-content-around">
+    {% if query %}
+    <div class="container">
+      <p>Searched for: {{ query }}</p>
+    </div>
+    {% else %}
+    <div class="col-md-12 mx-auto">
+      <input class="form-control mb-3 py-3" type="text" placeholder="Search" />
+    </div>
+    {% endif %} {% for artifact in object_list %}
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        {% if artifact.image %}
+        <img src="{{ artifact.image.url }}" class="card-img-top" alt="..." />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ artifact.title }}</h5>
+          <p class="card-text">
+            {{ artifact.description }}
+          </p>
+          <a href="{{ artifact.get_url }}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+{% endblock %}
