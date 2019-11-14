@@ -4,5 +4,5 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^$', SearchArtifactListView.as_view(), name='list')
+    url(r'^$', SearchArtifactListView.as_view(), name='query')
 ]

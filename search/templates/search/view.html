@@ -8,7 +8,7 @@
     </div>
     {% else %}
     <div class="col-md-12 mx-auto">
-      <input class="form-control mb-3 py-3" type="text" placeholder="Search" />
+      {% include 'search/snippets/search-form.html' %}
     </div>
     {% endif %} {% for artifact in object_list %}
     <div class="col">
