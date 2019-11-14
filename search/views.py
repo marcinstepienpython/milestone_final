@@ -11,4 +11,8 @@ class SearchArtifactListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         request = self.request
-        return Artifact.objects.all()
+        query = request.GET.get('q', None)
+
+        if query is not None:
+            return Artifact.objects.filter(title__icontains=query)
+        return Artifact.objects.features()
