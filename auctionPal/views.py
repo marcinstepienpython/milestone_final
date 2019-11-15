@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm
 
 def index(request):
+    # print(request.session.get('first_name', 'unknown'))
     return render(request, "index.html", {})
 
 def login_page(request):
