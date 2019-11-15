@@ -1,22 +1,22 @@
 {% extends 'base.html' %} {% block content%}
 <div class="container">
-  <div class="jumbotron">
-    <h1>{{ artifact.title }}</h1>
-  </div>
+  <h1>{{ artifact.title }}</h1>
 
+  {% if artifact.image %}
+  <div class="jumbotron">
+    <img src="{{ artifact.image.url }}" class="img-fluid" />
+  </div>
+  {% endif %}
+  <h3>Description</h3>
   <p>{{ artifact.description }}</p>
   <h3>Price</h3>
   <p>{{ artifact.price }} €</p>
-  <h3>Seller</h3>
-  <p>{{ artifact.seller }}</p>
+  <!-- <h3>Seller</h3>
+  <p>{{ artifact.seller }}</p> -->
   <h3>Year</h3>
   <p>{{ artifact.year }}</p>
   <h3>Origin</h3>
   <p>{{ artifact.origin }}</p>
-
-  {% if artifact.image %}
-  <p>Artifact Image</p>
-  <img src="{{ artifact.image.url }}" class="img-fluid" />
-  {% endif %}
+  <!-- <p>Image width: {{ artifact.image.width }}</p> -->
 </div>
 {% endblock %}

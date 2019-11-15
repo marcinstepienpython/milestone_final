@@ -38,7 +38,7 @@ Build a Django project backend by a relational database to create a website that
 (done) Multiple Apps: 
 The project must be a brand new Django project, composed of multiple apps (an app for each potentially reusable component in your project).
 
-Data Modeling: 
+(done) Data Modeling: 
 Put some effort into designing a relational database schema well-suited for your domain. Make sure to put some thought into the relationships between entities. Create at least 2 custom django models beyond the examples shown on the course
 
 (done) User Authentication: 
@@ -50,7 +50,7 @@ Include at least one form with validation that will allow users to create and ed
 Use of Stripe: 
 At least one of your Django apps should contain some e-commerce functionality using Stripe. This may be a shopping cart checkout, subscription-based payments or single payments, donations, etc. After paying successfully, the user would then gain access to additional functionality/content on the site. Note that for this project you should use Stripe's test functionality, rather than actual live payments.
 
-Structure and Navigation: 
+(done) Structure and Navigation: 
 Incorporate a main navigation menu and structured layout (you might want to use Bootstrap to accomplish this).
 
 Use of JavaScript: 
@@ -59,7 +59,7 @@ The frontend should contain some JavaScript logic to enhance the user experience
 Documentation: 
 Write a README.md file for your project that explains what the project does and the value that it provides to its users.
 
-Version Control: 
+(done) Version Control: 
 Use Git & GitHub for version control.
 
 Attribution:
