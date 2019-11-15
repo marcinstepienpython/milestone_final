@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from django.db.models import Q
+
 from django.views.generic import ListView
 from django.shortcuts import render
 
@@ -19,9 +19,6 @@ class SearchArtifactListView(ListView):
     def get_queryset(self, *args, **kwargs):
         request = self.request
         query = request.GET.get('q', None)
-
         if query is not None:
-            lookups = Q(title__icontains=query) | Q(
-                description__icontains=query) | Q(year__icontains=query) | Q(origin__icontains=query)
-            return Artifact.objects.filter(lookups).distinct()
+            return Artifact.objects.search(query)
         return Artifact.objects.features()

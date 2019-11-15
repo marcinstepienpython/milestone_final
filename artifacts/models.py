@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-
+from django.db.models import Q
 import random
 import os
 from django.db import models
@@ -31,6 +31,12 @@ class ArtifactQuerySet(models.query.QuerySet):
     def sold(self):
         return self.filter(sold=False)
 
+    def search(self, query):
+        lookups = Q(title__icontains=query) | Q(
+                description__icontains=query) | Q(year__icontains=query) | Q(origin__icontains=query)
+        
+        return self.filter(lookups).distinct()
+
 class ArtifactManager(models.Manager):
     # models manager
 
@@ -52,6 +58,9 @@ class ArtifactManager(models.Manager):
         if qs.count() == 1:
             return qs.first()
         return None
+
+    def search(self, query):
+        return self.get_queryset().all().search(query)
 
 
 class Artifact(models.Model):
