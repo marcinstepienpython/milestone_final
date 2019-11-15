@@ -11,7 +11,7 @@ Potential features to include:
 
     Allow users to search for artifacts based on various fields.
 
-    Allow users to see the price, image and other basic details about an artifact.
+    (done) Allow users to see the price, image and other basic details about an artifact.
 
     Users would be able to learn about the historical details of each artifact, the culture it came from, the way it was created and its journey across different owners in the past.
 
