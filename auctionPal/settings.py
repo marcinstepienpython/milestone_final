@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'artifacts',
     'search',
     'tags',
+    'carts',
 ]
 
 MIDDLEWARE = [

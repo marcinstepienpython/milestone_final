@@ -93,8 +93,14 @@ class Bid(models.Model):
     user = models.ForeignKey(User)
     amount = models.DecimalField(decimal_places=2, max_digits=20, default=0.50)
 
+    def __str__(self):
+        return self.amount
+
 
 class Comment(models.Model):
     auction = models.ForeignKey(Artifact)
     user = models.ForeignKey(User)
     comment = models.TextField()
+
+    def __str__(self):
+        return self.comment
