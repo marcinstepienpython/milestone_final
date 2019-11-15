@@ -33,7 +33,7 @@ class ArtifactQuerySet(models.query.QuerySet):
 
     def search(self, query):
         lookups = Q(title__icontains=query) | Q(
-                description__icontains=query) | Q(year__icontains=query) | Q(origin__icontains=query)
+                description__icontains=query) | Q(year__icontains=query) | Q(origin__icontains=query) | Q(tag__title__icontains=query)
         
         return self.filter(lookups).distinct()
 
