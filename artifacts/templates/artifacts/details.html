@@ -1,5 +1,10 @@
 {% extends 'base.html' %} {% block content%}
 <div class="container">
+  {% if object in cart.artifacts.all %} In cart
+  <button class="btn btn-danger">Remove</button>{% else %}
+  <button class="btn btn-success">Add to cart</button> {% endif %}
+</div>
+<div class="container">
   <h1>{{ artifact.title }}</h1>
 
   {% if artifact.image %}
@@ -19,4 +24,5 @@
   <p>{{ artifact.origin }}</p>
   <!-- <p>Image width: {{ artifact.image.width }}</p> -->
 </div>
+
 {% endblock %}

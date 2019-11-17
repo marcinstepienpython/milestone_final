@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Cart
+from artifacts.models import Artifact
 
 # Create your views here.
 
@@ -19,7 +20,19 @@ def cart_home(request):
     for x in artifacts:
 
         total += x.price
-    print('total:', total)
+
     cart_obj.total = total
     cart_obj.save()
     return render(request, 'carts/home.html', {})
+
+
+def cart_update(request):
+    artifact_id = 1
+    artifact_obj = Artifact.objects.get(id=artifact_id)
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
+    if artifact_obj in cart_obj.artifacts.all():
+        cart_obj.artifacts.remove(artifact_obj)
+    else:
+        cart_obj.artifacts.add(artifact_obj)
+    # return redirect(artifact_obj.get_url())
+    return redirect('cart:home')

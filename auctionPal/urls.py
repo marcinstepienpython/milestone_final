@@ -12,7 +12,8 @@ from carts.views import cart_home
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'login/$', login_page, name='login'),
-     url(r'cart/$', cart_home, name='cart'),
+    # url(r'cart/$', cart_home, name='cart'),
+    url(r'cart/', include("carts.urls", namespace='cart')),
     url(r'register/$', register_page, name='register'),
     # ModelListView as a callable item
     url(r'artifacts/$', ArtifactListView.as_view(), name='artifacts'),

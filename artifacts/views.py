@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 
 from .models import Artifact
-# Create your views here.
+from carts.models import Cart
 
 
 class ArtifactFeaturedListView(ListView):
@@ -35,6 +35,13 @@ class ArtifactListView(ListView):
 class ArtifactDetailView(DetailView):
     # queryset = Artifact.objects.all()
     template_name = 'artifacts/details.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ArtifactDetailView, self).get_context_data(*args, **kwargs)
+        request = self.request
+        cart_obj, new_obj = Cart.objects.new_or_get(request)
+        context['cart'] = cart_obj
+        return context
 
     def get_object(self, *args, **kwargs):
         request = self.request
