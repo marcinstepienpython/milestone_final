@@ -2,7 +2,9 @@
 from __future__ import unicode_literals
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from artifacts.models import Artifact
+from locale import str
 # Create your models here.
 
 User = settings.AUTH_USER_MODEL

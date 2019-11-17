@@ -39,9 +39,6 @@ class ArtifactQuerySet(models.query.QuerySet):
 
 class ArtifactManager(models.Manager):
     # models manager
-
-
-
     def get_queryset(self):
         return ArtifactQuerySet(self.model, using=self._db)
 

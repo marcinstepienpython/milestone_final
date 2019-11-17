@@ -43,22 +43,3 @@ class ArtifactDetailView(DetailView):
         if instance is None:
             raise Http404("Artifact does not exist")
         return instance
-
-    # def get_queryset(self, *args, **kwargs):
-    #     request = self.request
-    #     pk = self.kwargs.get('pk')
-    #     return Artifact.objects.filter(pk=pk)
-
-
-# development
-    # def get_context_data(self, **kwargs):
-    #     context = super(ArtifactListView, self).get_context_data(**kwargs)
-    #     return context
-
-
-# def artifact_list_view(request):
-#     queryset = Artifact.objects.all()
-#     context = {
-#         'object_list': queryset
-#     }
-#     return render(request, 'artifact/artifact_list_view.html', context)
