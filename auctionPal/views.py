@@ -39,7 +39,7 @@ def register_page(request):
         "form": form
     }
     if form.is_valid():
-        print(form.cleaned_data)
+        # print(form.cleaned_data)
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         email = form.cleaned_data.get('email')
