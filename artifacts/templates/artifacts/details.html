@@ -1,7 +1,5 @@
 {% extends 'base.html' %} {% block content%}
-<div class="container">
-  {% include "artifacts/snippets/update-card.html" with artifact=object cart=cart %}
-</div>
+
 <div class="container">
   <h1>{{ artifact.title }}</h1>
 
@@ -10,18 +8,35 @@
     <img src="{{ artifact.image.url }}" class="img-fluid" />
   </div>
   {% endif %}
+
   <h3>Description</h3>
   <p>{{ artifact.description }}</p>
 
-  <h3>Price</h3>
-  <p>{{ artifact.price }} €</p>
-  <!-- <h3>Seller</h3>
-  <p>{{ artifact.seller }}</p> -->
+
+
   <h3>Year</h3>
   <p>{{ artifact.year }}</p>
   <h3>Origin</h3>
   <p>{{ artifact.origin }}</p>
   <!-- <p>Image width: {{ artifact.image.width }}</p> -->
 </div>
+
+<div class="container">
+  <div class="jumbotron">
+    <h3>Buy-now Price</h3>
+    <p>{{ artifact.price }} €</p>
+    <div class="col-md-4">
+      {% include "artifacts/snippets/update-card.html" with artifact=object cart=cart %}
+    </div>
+    <h3 class='mt-3'>Highest bid</h3>
+    <p>00000.00 €</p>
+    <div class="col-md-4">
+      {% include "artifacts/snippets/bid.html" with artifact=object %}
+    </div>
+
+  </div>
+</div>
+
+
 
 {% endblock %}

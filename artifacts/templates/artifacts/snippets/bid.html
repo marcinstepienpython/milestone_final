@@ -1,0 +1,8 @@
+<form method="POST" action='{% url "cart:update" %}' class="form">{% csrf_token%}
+    <input type="hidden" name="artifact_id" value="{{artifact.id}}" />
+    <div class="input-group">
+        <input type="text" class='form-control' name="bid" />
+        <span class="input-group-append"><button class="btn btn-info btn-sm" type="submit">Make a bid</button></span>
+    </div>
+
+</form>
