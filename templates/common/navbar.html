@@ -1,6 +1,6 @@
 {% url 'index' as index_url %} {% url 'artifacts' as artifacts_url %}
-<!-- login -->
 {% url 'login' as login_url %} {% url 'register' as register_url %}
+{% url 'cart' as cart_url %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand {% if request.path == index_url %} active {% endif %}" href="{{ index_url }}">adart</a>
