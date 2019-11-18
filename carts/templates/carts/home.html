@@ -8,7 +8,7 @@
         <th scope="col">#</th>
         <th scope="col">Artifact Name</th>
         <th scope="col">Price</th>
-        <th scope="col">Action</th>
+
 
       </tr>
     </thead>
@@ -16,10 +16,11 @@
       {% for artifact in cart.artifacts.all %}
       <tr>
         <th scope="row">{{ forloop.counter}}</th>
-        <td><a href='{{ artifact.get_url}}'>{{artifact.title}}</a>
+        <td><a
+            href='{{ artifact.get_url}}'>{{artifact.title}}{% include "artifacts/snippets/update-card.html" with artifact=artifact cart=cart in_cart=True%}</a>
         </td>
         <td>{{artifact.price}} €</td>
-        <td><button class='btn btn-danger btn-sm'>Remove from cart</button></td>
+
 
       </tr>
       {% endfor %}
