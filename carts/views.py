@@ -27,12 +27,17 @@ def cart_home(request):
 
 
 def cart_update(request):
-    artifact_id = 1
-    artifact_obj = Artifact.objects.get(id=artifact_id)
-    cart_obj, new_obj = Cart.objects.new_or_get(request)
-    if artifact_obj in cart_obj.artifacts.all():
-        cart_obj.artifacts.remove(artifact_obj)
-    else:
-        cart_obj.artifacts.add(artifact_obj)
+    artifact_id = request.POST.get('artifact_id')
+    if artifact_id is not None:
+        try:
+            artifact_obj = Artifact.objects.get(id=artifact_id)
+        except Artifact.DoesNotExist:
+            return redirect('cart:home')
+
+        cart_obj, new_obj = Cart.objects.new_or_get(request)
+        if artifact_obj in cart_obj.artifacts.all():
+            cart_obj.artifacts.remove(artifact_obj)
+        else:
+            cart_obj.artifacts.add(artifact_obj)
     # return redirect(artifact_obj.get_url())
     return redirect('cart:home')

@@ -1,0 +1,6 @@
+<form method="POST" action='{% url "cart:update" %}' class="form">{% csrf_token%}
+  <input type="hidden" name="artifact_id" value="{{artifact.id}}" />
+  {% if artifact in cart.artifacts.all %} In cart
+  <button class="btn btn-danger" type="submit">Remove</button>{% else %}
+  <button class="btn btn-success" type="submit">Add to cart</button> {% endif %}
+</form>

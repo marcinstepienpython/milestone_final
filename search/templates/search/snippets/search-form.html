@@ -1,19 +1,9 @@
-<form
-  method="GET"
-  action='{% url "search:query" %}'
-  class="form my-2 my-lg-0 ml-auto"
->
+<form method="GET" action='{% url "search:query" %}' class="form my-2 my-lg-0 ml-auto">
   <div class="input-group">
-    <input
-      class="form-control"
-      type="text"
-      name="q"
-      placeholder="Search artifacts"
-      aria-label="Search"
-      value="{{ request.GET.q}}"
-    />
+    <input class="form-control" type="text" name="q" placeholder="Search artifacts" aria-label="Search"
+      value="{{ request.GET.q}}" />
     <span class="input-group-append">
-      <button class="btn btn-outline-secondary" type="submit">
+      <button class="btn btn-secondary" type="submit">
         Search
       </button>
     </span>
