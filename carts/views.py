@@ -15,15 +15,7 @@ def cart_create(user=None):
 
 def cart_home(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
-    artifacts = cart_obj.artifacts.all()
-    total = 0
-    for x in artifacts:
-
-        total += x.price
-
-    cart_obj.total = total
-    cart_obj.save()
-    return render(request, 'carts/home.html', {})
+    return render(request, 'carts/home.html', {"cart": cart_obj})
 
 
 def cart_update(request):

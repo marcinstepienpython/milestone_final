@@ -1,6 +1,38 @@
 {% extends 'base.html' %} {% block content%}
 <div class="container">
   <h1>Cart</h1>
+  {% if cart.artifacts.exists %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Artifact Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for artifact in cart.artifacts.all %}
+      <tr>
+        <th scope="row">{{ forloop.counter}}</th>
+        <td><a href='{{ artifact.get_url}}'>{{artifact.title}}</a>
+        </td>
+        <td>{{artifact.price}} €</td>
+        <td><button class='btn btn-danger btn-sm'>Remove from cart</button></td>
+
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan='2'></td>
+
+        <td><b>Total:</b>{{cart.total}} €</td>
+      </tr>
+    </tbody>
+  </table>
+  {% else %}
+  <p class='lead'>Cart is empty.</p>
+  {% endif %}
 </div>
 
 {% endblock content%}
