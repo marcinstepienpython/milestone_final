@@ -1,15 +1,17 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from bids.models import Bid
+# from django.db.models import Max
 
 User = get_user_model()
 
-class BidForm(forms.Form):
-    offer = forms.CharField(widget=forms.TextInput(
-        attrs={"class": 'form-control', "placeholder": "Bid", "id": "form_bid"}))
-    # class Meta:
-    #     model = Bid
-    #     fields = ('offer')
+
+class BidForm(forms.ModelForm):
+
+    class Meta:
+        model = Bid
+        fields = ('offer',)
+
 
 
 class LoginForm(forms.Form):
@@ -24,7 +26,8 @@ class RegisterForm(forms.Form):
         attrs={"class": 'form-control', "placeholder": "Username", "id": "form_username"}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={"class": 'form-control', "placeholder": "Password", "id": "form_password"}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', "placeholder": "Email", "id": "form_email"}))
+    email = forms.EmailField(widget=forms.EmailInput(
+        attrs={'class': 'form-control', "placeholder": "Email", "id": "form_email"}))
     password2 = forms.CharField(
         label='Confirm password', widget=forms.PasswordInput(attrs={"class": 'form-control', "placeholder": "Password", "id": "form_password"}))
 

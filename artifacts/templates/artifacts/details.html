@@ -24,19 +24,29 @@
 <div class="container">
   <div class="jumbotron">
     <h3>Buy-now Price</h3>
-    <p>{{ artifact.price }} €</p>
+    <div class="bids" style='padding-left: 15px;'>
+      <p>{{ artifact.price }} €</p>
+    </div>
+
     <div class="col-md-4">
       {% include "artifacts/snippets/update-card.html" with artifact=object cart=cart %}
     </div>
     <div>
 
       <h3 class='mt-3'> Bid history</h3>
+      <div class="bids" style='padding-left: 15px;'>
+        {% for bid in bids %}
+        {% if artifact.id == bid.artifact.id %}
+        {% if bid.offer >= artifact.min_price %}
+        <p style='color:green; font-size: 1.5rem;'>{{ bid.offer }}€ - winning bid placed by {{bid.user}}! </p>
+        {% else %}
+        <p>{{ bid.offer }} € </p>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
 
-      {% for bid in bids %}
-      {% if artifact.id == bid.artifact.id %}
-      <p>{{ bid.offer }} € </p>
-      {% endif %}
-      {% endfor %}
+
 
 
     </div>
@@ -44,7 +54,7 @@
     <div class="col-md-6">
       {% if user.is_authenticated %}
 
-      <a class="btn btn-default" href="{% url 'bid_new' pk=artifact.pk %}">Make a bid!</a>
+      <a class="btn btn-outline-secondary" href="{% url 'bid_new' pk=artifact.pk %}">Make a bid!</a>
 
       {% else  %}
       <p>Please login to make a bid</p>

@@ -3,8 +3,8 @@
     <h1>Make a bid</h1>
     <div class="col-md-6">
         <form method="POST" class="post-form">{% csrf_token %}
-            {{ form }}
-            <button type="submit" class="save btn btn-default">Save</button>
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-info mt-3">Send</button>
         </form>
     </div>
 </div>

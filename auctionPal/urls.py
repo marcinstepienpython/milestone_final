@@ -22,8 +22,9 @@ urlpatterns = [
     url(r'artifacts/$', ArtifactListView.as_view(), name='artifacts'),
     url(r'featured/$', ArtifactFeaturedListView.as_view(), name='featured'),
     # Checking the artifact primary key
-    url(r'artifacts/(?P<pk>\d+)/$', ArtifactDetailView.as_view()),
-    url(r'featured/(?P<pk>\d+)/$', ArtifactFeaturedDetailView.as_view()),
+    url(r'artifacts/(?P<pk>\d+)/$', ArtifactDetailView.as_view(), name='details'),
+    url(r'featured/(?P<pk>\d+)/$',
+        ArtifactFeaturedDetailView.as_view()),
     url(r'search/', include("search.urls", namespace='search')),
     # Admin url
     url(r'^admin/', admin.site.urls),
