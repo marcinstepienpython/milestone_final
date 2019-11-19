@@ -1,7 +1,15 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from bids.models import Bid
 
 User = get_user_model()
+
+class BidForm(forms.Form):
+    offer = forms.CharField(widget=forms.TextInput(
+        attrs={"class": 'form-control', "placeholder": "Bid", "id": "form_bid"}))
+    # class Meta:
+    #     model = Bid
+    #     fields = ('offer')
 
 
 class LoginForm(forms.Form):

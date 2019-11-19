@@ -30,7 +30,7 @@
     </div>
     <div>
 
-      <h3 class='mt-3'> Bids history</h3>
+      <h3 class='mt-3'> Bid history</h3>
 
       {% for bid in bids %}
       {% if artifact.id == bid.artifact.id %}
@@ -41,9 +41,14 @@
 
     </div>
 
+    <div class="col-md-6">
+      {% if user.is_authenticated %}
 
-    <div class="col-md-4">
-      {% include "artifacts/snippets/bid.html" with artifact=object %}
+      <a class="btn btn-default" href="{% url 'bid_new' pk=artifact.pk %}">Make a bid!</a>
+
+      {% else  %}
+      <p>Please login to make a bid</p>
+      {% endif %}
     </div>
 
   </div>
