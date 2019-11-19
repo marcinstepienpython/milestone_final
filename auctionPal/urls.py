@@ -8,10 +8,12 @@ from artifacts.views import ArtifactListView, ArtifactDetailView, ArtifactFeatur
 
 from .views import index, login_page, register_page
 from carts.views import cart_home
+from bids.views import bid_list
 
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'login/$', login_page, name='login'),
+    url(r'bids/$', bid_list, name='bids'),
     url(r'mycart/$', cart_home, name='cart'),
     url(r'cart/', include("carts.urls", namespace='cart')),
     url(r'register/$', register_page, name='register'),

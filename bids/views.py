@@ -2,5 +2,12 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from .models import Bid
 
-# Create your views here.
+
+def bid_list(request):
+    bids = Bid.objects.all()
+    context = {
+        'bids': bids
+    }
+    return render(request, 'bids/snippets/bids.html', context)

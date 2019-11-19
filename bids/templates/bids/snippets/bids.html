@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content%}
+<div class="container ">
+    <h1>Latest bids:</h1>
+    <div>
+        {% for bid in bids %}
+        <p>{{bid.user}} offered {{bid.offer}} for {{ bid }}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

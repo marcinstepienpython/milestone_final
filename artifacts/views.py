@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView
 
 from .models import Artifact
 from carts.models import Cart
+from bids.models import Bid
 
 
 class ArtifactFeaturedListView(ListView):
@@ -41,6 +42,8 @@ class ArtifactDetailView(DetailView):
         request = self.request
         cart_obj, new_obj = Cart.objects.new_or_get(request)
         context['cart'] = cart_obj
+        bids = Bid.objects.all().order_by('-offer')
+        context['bids'] = bids
         return context
 
     def get_object(self, *args, **kwargs):
