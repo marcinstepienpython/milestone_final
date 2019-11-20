@@ -5,14 +5,16 @@ from django.db import models
 from carts.models import Cart
 
 from django.db.models.signals import post_save
-
+from billing.models import BillingProfile
 # Create your models here.
 
 
 class Order(models.Model):
+    billing_profile = models.ForeignKey(BillingProfile, null=True, blank=True)
     cart = models.ForeignKey(Cart)
     status = models.CharField(max_length=120, default='created')
     total = models.DecimalField(default=0.00, max_digits=30, decimal_places=2)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.id)
