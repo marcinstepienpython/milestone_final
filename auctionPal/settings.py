@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'carts',
     'orders',
     'bids',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+LOGOUT_REDIRECT_URL = '/'
 ROOT_URLCONF = 'auctionPal.urls'
 
 TEMPLATES = [

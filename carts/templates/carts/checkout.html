@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content%}
 <div class="container">
     <h1>Checkout</h1>
-    <p>Cart total: {{ object.cart.total }} €</p>
-    <p>Standard shipping fee: 50€</p>
+    <p>Cart total: €{{ object.cart.total }}</p>
+    <p>Standard shipping fee: €50</p>
     <hr>
-    <p style="font-size:1.5rem;">Total: {{ object.total}} €</p>
+    <p style="font-size:1.5rem;">Total: €{{ object.total}}</p>
 </div>
 
 

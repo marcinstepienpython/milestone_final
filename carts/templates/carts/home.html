@@ -19,7 +19,7 @@
         <td><a
             href='{{ artifact.get_url}}'>{{artifact.title}}{% include "artifacts/snippets/update-card.html" with artifact=artifact cart=cart in_cart=True%}</a>
         </td>
-        <td>{{artifact.price}} €</td>
+        <td>€{{artifact.price}}</td>
 
 
       </tr>
@@ -27,7 +27,7 @@
       <tr>
         <td colspan='2'></td>
 
-        <td><b>Total:</b>{{cart.total}} €</td>
+        <td><b>Total:</b>€{{cart.total}}</td>
       </tr>
       <tr>
         <td colspan='2'></td>
