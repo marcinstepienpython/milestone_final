@@ -30,6 +30,24 @@ class Order(models.Model):
         self.save()
         return new_total
 
+    def check_done(self):
+        billing_profile = self.billing_profile
+        shipping_address = self.shipping_address
+        total = self.total
+
+        # check if checkout is completed
+        if billing_profile and shipping_address and total >0:
+            return True
+        
+        return False
+    
+    def mark_paid(self):
+        if self.check_done():
+            self.status = "paid"
+            self.save()
+        return self.status
+
+
 
 def post_save_cart_total(sender, instance, created, *args, **kwargs):
 

@@ -93,6 +93,15 @@ def checkout_home(request):
             # print('1', order_obj.shipping_address)
             order_obj.save()
 
+    if request.method == 'POST':
+        is_done = order_obj.check_done()
+        if is_done:
+            order_obj.mark_paid()
+            del request.session['cart_id']
+
+       
+            return redirect('cart:success')
+
     context = {
         "object": order_obj,
         "billing_profile": billing_profile,
@@ -102,3 +111,6 @@ def checkout_home(request):
     }
 
     return render(request, 'carts/checkout.html', context)
+
+def checkout_done_view(request):
+    return render(request, 'carts/checkout-done.html', {})

@@ -27,17 +27,22 @@
 {%else%}
 
 <div class="jumbotron">
-    <h1>Checkout</h1>
+    <h1>Order summary</h1>
     <div class="row">
         <div class="col-md-6 offset-md-3">
-
+            <p>Cart items: {% for artifact in object.cart.artifacts.all%}{{ artifact}}{% if not forloop.last%},
+                {% endif%}{%endfor%}</p>
             <p>Cart total: €{{ object.cart.total }}</p>
             <p>Standard shipping fee: €50</p>
             <hr>
             <p style="font-size:1.5rem;">Total: €{{ object.total}}</p>
+            <hr>
+            <p>Shipping address: {{ object.shipping_address.get_address}} </p>
         </div>
     </div>
-    <button>Checkout</button>
+    <form class='form' method='POST' action=''>{% csrf_token %}
+        <button type='submit' class='btn btn-info ml-auto'>Purchase</button>
+    </form>
 </div>
 
 
