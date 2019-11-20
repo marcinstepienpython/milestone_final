@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'bids',
     'accounts',
     'billing',
+    'addresses',
 ]
 
 MIDDLEWARE = [
