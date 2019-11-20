@@ -7,6 +7,7 @@ from orders.models import Order
 from billing.models import BillingProfile
 from accounts.forms import LoginForm, GuestForm
 from accounts.models import GuestEmail
+from addresses.forms import AddressForm
 
 # Create your views here.
 
@@ -45,22 +46,28 @@ def checkout_home(request):
     if cart_created or cart_obj.artifacts.count() == 0:
         return redirect('cart:home')
 
-    user = request.user
-    billing_profile = None
+    # user = request.user
+    # billing_profile = None
     login_form = LoginForm()
     guest_form = GuestForm()
-    guest_email_id = request.session.get('guest_email_id')
-    if user.is_authenticated():
-        if user.email:
-            billing_profile, billing_profile_created = BillingProfile.objects.get_or_create(
-                user=user, email=user.email)
+    address_form = AddressForm()
+    billing_address_form = AddressForm()
+    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
     
-    elif guest_email_id is not None:
-        guest_email_obj = GuestEmail.objects.get(id=guest_email_id)
-        billing_profile, billing_guest_profile_created = BillingProfile.objects.get_or_create(email=guest_email_obj.email)
+
+    # guest_email_id = request.session.get('guest_email_id')
+
+    # if user.is_authenticated():
+    #     if user.email:
+    #         billing_profile, billing_profile_created = BillingProfile.objects.get_or_create(
+    #             user=user, email=user.email)
     
-    else:
-        pass
+    # elif guest_email_id is not None:
+    #     guest_email_obj = GuestEmail.objects.get(id=guest_email_id)
+    #     billing_profile, billing_guest_profile_created = BillingProfile.objects.get_or_create(email=guest_email_obj.email)
+    
+    # else:
+    #     pass
 
     # check if order doesnt exist
     if billing_profile is not None:
@@ -80,7 +87,9 @@ def checkout_home(request):
     context = {
         "object": order_obj,
         "billing_profile": billing_profile,
-        "guest_form":guest_form
+        "guest_form":guest_form,
+        "address_form":address_form,
+        "billing_address_form":address_form,
     }
 
     return render(request, 'carts/checkout.html', context)

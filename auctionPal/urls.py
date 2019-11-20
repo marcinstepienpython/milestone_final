@@ -10,6 +10,7 @@ from accounts.views import login_page, register_page, guest_register_view
 from .views import index
 from carts.views import cart_home
 from bids.views import bid_list, bid_new
+from addresses.views import checkout_address
 
 urlpatterns = [
     url(r'^$', index, name='index'),
@@ -17,6 +18,7 @@ urlpatterns = [
     url(r'register/guest/$', guest_register_view, name='guest_register'),
     url(r'logout/$', LogoutView.as_view(), name='logout'),
     url(r'bids/new/(?P<pk>\d+)/$', bid_new, name='bid_new'),
+    url(r'^checkout/address/create/$', checkout_address, name='checkout_address'),
     url(r'bids/$', bid_list, name='bids'),
     url(r'mycart/$', cart_home, name='cart'),
     url(r'cart/', include("carts.urls", namespace='cart')),
