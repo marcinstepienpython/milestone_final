@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from artifacts.views import ArtifactListView, ArtifactDetailView, ArtifactFeaturedListView, ArtifactFeaturedDetailView
 
-from accounts.views import login_page, register_page
+from accounts.views import login_page, register_page, guest_register_view
 from .views import index
 from carts.views import cart_home
 from bids.views import bid_list, bid_new
@@ -14,6 +14,7 @@ from bids.views import bid_list, bid_new
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'login/$', login_page, name='login'),
+    url(r'register/guest/$', guest_register_view, name='guest_register'),
     url(r'logout/$', LogoutView.as_view(), name='logout'),
     url(r'bids/new/(?P<pk>\d+)/$', bid_new, name='bid_new'),
     url(r'bids/$', bid_list, name='bids'),

@@ -1,4 +1,15 @@
 {% extends 'base.html' %} {% block content%}
+
+{% if not billing_profile %}
+<div class="container">
+    <p>Login</p>
+    <p>Continue as Guest</p>
+    {% url 'guest_register' as guest_register_url %}
+    {% include 'accounts/snippets/form.html' with form=guest_form action_url=guest_register_url %}
+</div>
+
+
+{% else %}
 <div class="container">
     <h1>Checkout</h1>
     <p>Cart total: €{{ object.cart.total }}</p>
@@ -6,6 +17,6 @@
     <hr>
     <p style="font-size:1.5rem;">Total: €{{ object.total}}</p>
 </div>
-
+{% endif %}
 
 {% endblock content%}

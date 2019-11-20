@@ -5,6 +5,10 @@ from bids.models import Bid
 
 User = get_user_model()
 
+class GuestForm(forms.Form):
+        email = forms.EmailField(widget=forms.EmailInput(
+        attrs={'class': 'form-control', "placeholder": "Email", "id": "form_email"}))
+
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(
         attrs={"class": 'form-control', "placeholder": "Username", "id": "form_username"}))
