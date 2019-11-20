@@ -8,6 +8,7 @@ from billing.models import BillingProfile
 from accounts.forms import LoginForm, GuestForm
 from accounts.models import GuestEmail
 from addresses.forms import AddressForm
+from addresses.models import Address
 
 # Create your views here.
 
@@ -51,45 +52,53 @@ def checkout_home(request):
     login_form = LoginForm()
     guest_form = GuestForm()
     address_form = AddressForm()
-    billing_address_form = AddressForm()
-    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
-    
 
-    # guest_email_id = request.session.get('guest_email_id')
+    shipping_address_id = request.session.get('shipping_address_id', None)
 
-    # if user.is_authenticated():
-    #     if user.email:
-    #         billing_profile, billing_profile_created = BillingProfile.objects.get_or_create(
-    #             user=user, email=user.email)
-    
-    # elif guest_email_id is not None:
-    #     guest_email_obj = GuestEmail.objects.get(id=guest_email_id)
-    #     billing_profile, billing_guest_profile_created = BillingProfile.objects.get_or_create(email=guest_email_obj.email)
-    
-    # else:
-    #     pass
+    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(
+        request)
 
     # check if order doesnt exist
     if billing_profile is not None:
-        order_qs = Order.objects.filter(billing_profile=billing_profile, cart=cart_obj, active=True)
-        if order_qs.count()==1:
+        order_qs = Order.objects.filter(
+            billing_profile=billing_profile, cart=cart_obj, active=True)
+
+        order_obj, order_object_created = BillingProfile.objects.new_or_get(
+            request)
+        
+
+        if order_qs.count() == 1:
             order_obj = order_qs.first()
+            # print('2', order_obj.shipping_address)
+
         else:
-            old_order_qs = Order.objects.exclude(billing_profile=billing_profile).filter(cart=cart_obj, active=True)
+            old_order_qs = Order.objects.exclude(
+                billing_profile=billing_profile).filter(cart=cart_obj, active=True)
             if old_order_qs.exists():
                 old_order_qs.update(active=False)
 
-            order_obj = Order.objects.create(billing_profile=billing_profile, cart=cart_obj)
-
+            order_obj = Order.objects.create(
+                billing_profile=billing_profile, cart=cart_obj)
+        
+        if shipping_address_id:
     
-
+            order_obj.shipping_address = Address.objects.get(
+                id=shipping_address_id)
+            # print('order_obj.shipping_address', order_obj.shipping_address)
+            
+            # delete the session
+            del request.session['shipping_address_id']
+        
+        if shipping_address_id:
+            # print('1', order_obj.shipping_address)
+            order_obj.save()
 
     context = {
         "object": order_obj,
         "billing_profile": billing_profile,
-        "guest_form":guest_form,
-        "address_form":address_form,
-        "billing_address_form":address_form,
+        "guest_form": guest_form,
+        "address_form": address_form,
+        # "billing_address_form":address_form,
     }
 
     return render(request, 'carts/checkout.html', context)

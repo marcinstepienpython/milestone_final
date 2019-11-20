@@ -13,17 +13,19 @@
 {% else %}
 
 {% if not object.shipping_address %}
+
 <div class="row">
     <div class='col-md-6 mx-auto col-10'>
         <p class='lead'>Shipping Address</p>
+        {{object.shipping_address}}
         <hr />
         {% url 'checkout_address' as checkout_address_url %}
         {% include 'addresses/form.html' with form=address_form action_url=checkout_address_url address_type='shipping'%}
     </div>
 </div>
 
-
 {%else%}
+
 <div class="jumbotron">
     <h1>Checkout</h1>
     <div class="row">
@@ -35,8 +37,10 @@
             <p style="font-size:1.5rem;">Total: €{{ object.total}}</p>
         </div>
     </div>
-
+    <button>Checkout</button>
 </div>
+
+
 {% endif %}
 {% endif %}
 {% endblock content%}
