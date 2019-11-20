@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block content%}
-{{object.order.id}} -- {{ object.cart }}
+<!-- {{order.id}} -- {{ object.cart }} -->
 
 {% if not billing_profile %}
-<div class="container">
+<div class="jumbotron">
     <p>Login</p>
     <p>Continue as Guest</p>
     {% url 'guest_register' as guest_register_url %}
@@ -11,12 +11,17 @@
 
 
 {% else %}
-<div class="container">
-    <h1>Checkout</h1>
-    <p>Cart total: €{{ object.cart.total }}</p>
-    <p>Standard shipping fee: €50</p>
-    <hr>
-    <p style="font-size:1.5rem;">Total: €{{ object.total}}</p>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>Checkout</h1>
+            <p>Cart total: €{{ object.cart.total }}</p>
+            <p>Standard shipping fee: €50</p>
+            <hr>
+            <p style="font-size:1.5rem;">Total: €{{ object.total}}</p>
+        </div>
+    </div>
+
 </div>
 {% endif %}
 
