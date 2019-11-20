@@ -7,17 +7,17 @@ Build an auction place to sell historical artifacts
         Earn money on selling the artifacts (the site owner is the seller)
 
 Potential features to include:
-    Create an online store focused on selling unique historical artifacts, such as The Holy Grail to the highest bidder.
+    (done) Create an online store focused on selling unique historical artifacts, such as The Holy Grail to the highest bidder.
 
-    Allow users to search for artifacts based on various fields.
+    (done) Allow users to search for artifacts based on various fields.
 
     (done) Allow users to see the price, image and other basic details about an artifact.
 
-    Users would be able to learn about the historical details of each artifact, the culture it came from, the way it was created and its journey across different owners in the past.
+    (done) Users would be able to learn about the historical details of each artifact, the culture it came from, the way it was created and its journey across different owners in the past.
 
     For example, you might want to include information about "events" that took place in the past and that one or more artifacts took place in, or originated from.
 
-    Allow users to bid on items, or pay a higher price to purchase them immediately. Users have to be registered for this.
+    (done) Allow users to bid on items, or pay a higher price to purchase them immediately. Users have to be registered for this.
 
 (*) Advanced potential feature (nice-to-have)
 (ok) Allow registered users to write reviews about the artifacts, only if they purchased them.
