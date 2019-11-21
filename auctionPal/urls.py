@@ -9,6 +9,7 @@ from artifacts.views import ArtifactListView, ArtifactDetailView, ArtifactFeatur
 from accounts.views import login_page, register_page, guest_register_view
 from .views import index
 from carts.views import cart_home
+from billing.views import payment_method_view
 from bids.views import bid_list, bid_new
 from addresses.views import checkout_address
 
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'bids/$', bid_list, name='bids'),
     url(r'mycart/$', cart_home, name='cart'),
     url(r'cart/', include("carts.urls", namespace='cart')),
+    url(r'billing/payment-method/$', payment_method_view, name='billing_payment_method'),
     url(r'register/$', register_page, name='register'),
     # ModelListView as a callable item
     url(r'artifacts/$', ArtifactListView.as_view(), name='artifacts'),
