@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
-from billing.models import BillingProfile
+from billing.models import BillingProfile, Card
 import stripe
 
 stripe.api_key = 'sk_test_0B3fJfkQVP9QjRIKejUSPsXZ00d2j5pJT2'
@@ -37,8 +37,11 @@ def payment_method_createview(request):
         token = request.POST.get('token')
 
         if token is not None:
-            customer = stripe.Customer.retrieve(billing_profile.customer_id)
-            card_response = customer.sources.create(source=token)
-            print(card_response)
+            # customer = stripe.Customer.retrieve(billing_profile.customer_id)
+            # card_response = customer.sources.create(source=token)
+            # print(card_response)
+            new_card_obj = Card.objects.add_new(billing_profile, token)
+            print('new_card_obj:', new_card_obj)
+            # print(card_response)
         return JsonResponse({'message': 'Success! Card added!'})
     return HttpResponse("error", status_code=401)
