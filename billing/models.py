@@ -59,3 +59,7 @@ def user_created_receiver(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(user_created_receiver, sender=User)
+
+
+class Car(models.Model):
+    pass
