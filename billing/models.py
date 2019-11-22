@@ -8,7 +8,7 @@ from accounts.models import GuestEmail
 User = settings.AUTH_USER_MODEL
 
 import stripe 
-stripe.api_key = 'sk_live_tV5por3kAUdEdY8s1HKl8Xn000MuhyijF6'
+stripe.api_key = 'sk_test_0B3fJfkQVP9QjRIKejUSPsXZ00d2j5pJT2'
 
 
 class BillingProfileManager(models.Manager):

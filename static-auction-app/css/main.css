@@ -1,9 +1,12 @@
 body {
   color: #333;
   font-family: "Cinzel", serif;
+  
 }
 
 .card-img-top {
   object-fit: contain;
   height: 200px;
 }
+
+
