@@ -1,5 +1,10 @@
 {% load static %}
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href='{% static "css/main.css" %}' />
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
@@ -8,7 +13,7 @@
     data-next-url='/billing'>
 
     <div class="jumbotron">
-        <h1>Payment</h1>
+        <h1>Payment Method</h1>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
@@ -25,7 +30,7 @@
                         <div id="card-errors" role="alert"></div>
                     </div>
 
-                    <button class='btn btn-info mt-3 btn-block'>Add Payment Method</button>
+                    <button class='btn btn-info mt-3 btn-block'>Add Card</button>
                 </div>
             </div>
         </div>
@@ -33,7 +38,7 @@
     </div>
 
 </form>
-
+{% include 'base/js.html' %}
 <script>
 
     var stripe = Stripe('pk_test_fpcyXSS2P3x8EvV4rA9hTheC004wTnx3KO');
@@ -81,7 +86,17 @@
             url: paymentMethodEndpoint,
             method: "POST",
             success: function (data) {
-                console.log(data)
+                var success = data.message || "Success! Card added!"
+                card.clear()
+                if ($.alert) {
+                    $.alert(success)
+                    setTimeout(function () {
+                        window.location = '/billing/'
+                    }, 3000)
+
+                } else {
+                    window.location.reload()
+                }
             },
             error: function (error) {
                 console.log(error)
@@ -90,4 +105,10 @@
     }
 
 </script>
-{% include 'base/js.html' %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>

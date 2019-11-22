@@ -17,5 +17,5 @@ def payment_method_view(request):
 
 def payment_method_createview(request):
     if request.method == "POST":
-        return JsonResponse({'message': 'done'})
+        return JsonResponse({'message': 'Success! Card added!'})
     return HttpResponse("error", status_code=401)
