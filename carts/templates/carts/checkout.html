@@ -39,13 +39,15 @@
             <p style="font-size:1.5rem;">Total: €{{ object.total}}</p>
             <hr>
             <p>Shipping address: {{ object.shipping_address.get_address}} </p>
+
+            <form class='form' method='POST' action=''>{% csrf_token %}
+                <button type='submit' class='btn btn-secondary '>Make the payment</button>
+            </form>
         </div>
     </div>
-    <a href="/billing/payment-method/"> <button class="btn btn-secondary mb-3">Add payment method</button></a>
+    <!-- <a href="/billing/payment-method/"> <button class="btn btn-secondary mb-3">Add payment method</button></a> -->
 
-    <form class='form' method='POST' action=''>{% csrf_token %}
-        <button type='submit' class='btn btn-info ml-auto'>Buy</button>
-    </form>
+
 </div>
 
 

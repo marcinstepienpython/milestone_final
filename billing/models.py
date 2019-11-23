@@ -122,6 +122,7 @@ class ChargeManager(models.Manager):
             if cards.exists():
                 card_obj = cards.first()
         if card_obj is None:
+            
             return False, "No cards available"
         c = stripe.Charge.create(
               amount = int(order_obj.total * 100), # 39.19 --> 3919
