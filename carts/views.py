@@ -102,6 +102,7 @@ def checkout_home(request):
                 del request.session['cart_id']
                 return redirect('cart:success')
             else:
+                pass
                 print(charge_message)
                 return redirect("cart:checkout")
             

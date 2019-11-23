@@ -42,6 +42,8 @@ class BillingProfile(models.Model):
 
     def charge(self, order_obj, card=None):
         return Charge.objects.do(self, order_obj, card)
+    
+
 
 # Create billing profile after a new User has been created.
 def billing_profile_created_receiver(sender, instance, *args, **kwargs):
@@ -111,10 +113,12 @@ def new_card_post_save_receiver(sender, instance, created, *args, **kwargs):
 post_save.connect(new_card_post_save_receiver, sender=Card)
 
 class ChargeManager(models.Manager):
-    def do(self, billing_profile, order_obj, card=None): # Charge.objects.do()
+    def do(self, billing_profile, order_obj, card): # Charge.objects.do()
         card_obj = card
         if card_obj is None:
             cards = billing_profile.card_set.filter(default=True) # card_obj.billing_profile
+            print('cards:',cards)
+            print('billing_profile',billing_profile)
             if cards.exists():
                 card_obj = cards.first()
         if card_obj is None:
