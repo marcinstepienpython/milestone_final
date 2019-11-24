@@ -67,7 +67,7 @@ class Artifact(models.Model):
     min_price = models.DecimalField(decimal_places=2, max_digits=20, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=20, null=True)
     deadline = models.DateTimeField()
-    seller = models.ForeignKey(User)
+    buyer = models.ForeignKey(User, null=True, blank=True)
     sold = models.BooleanField(default=False)
     image = models.ImageField(
         upload_to=upload_image_path, null=True, blank=True)
@@ -83,6 +83,16 @@ class Artifact(models.Model):
 
     def __str__(self):
         return self.title
+
+    def set_status(self):
+        self.sold = True
+        self.save()
+        return self.sold
+    
+    def set_buyer(self, user):
+        self.buyer = user
+        self.save()
+        return self.buyer
 
 
 # class Bid(models.Model):

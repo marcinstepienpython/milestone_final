@@ -99,6 +99,10 @@ def checkout_home(request):
             charged, charge_message = billing_profile.charge(order_obj)
             if charged:
                 order_obj.mark_paid()
+                print(request.user)
+                for artifact_obj in cart_obj.artifacts.all():
+                    artifact_obj.set_status()
+                    artifact_obj.set_buyer(request.user)
                 del request.session['cart_id']
                 return redirect('cart:success')
             else:
