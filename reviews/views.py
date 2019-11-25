@@ -6,12 +6,20 @@ from .models import Review
 from auctionPal.forms import ReviewForm
 from artifacts.models import Artifact
 
+
 def review_list(request):
     reviews = Review.objects.all().order_by('-id')
     context = {
         'reviews': reviews
-    }
+      }
+    
+    if request.user:
+        artifacts = Artifact.objects.filter(buyer=request.user)
+        context['artifacts'] = artifacts
+        
+
     return render(request, 'reviews/reviews_list.html', context)
+
 
 def review_new(request, pk):
     if request.method == 'POST':
@@ -24,7 +32,7 @@ def review_new(request, pk):
             review.artifact = artifact
 
             review.save()
-            return redirect('details', pk=pk)
+            return redirect('reviews')
         else:
 
             return render(request, 'reviews/new.html', {'form': form})

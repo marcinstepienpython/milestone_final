@@ -1,6 +1,41 @@
 {% extends 'base.html' %} {% block content%}
-<div class="container ">
-    <h1>Reviews</h1>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-7">
+            <h1>Reviews</h1>
+            {% for review in reviews %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ review.artifact.image.url }}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{review.title}}</h5>
+                            <p class="card-text">{{review.review}}</p>
+                            <p class="card-text"><small class="text-muted">by {{review.user.username}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-5">
+            <h1>Add/Edit review for:</h1>
+
+            {% for artifact in artifacts %}
+            <a href="{% url 'review_new' pk=artifact.pk %}">{{artifact.title}}</a>
+
+            {% empty %}
+            <div>Sorry! No items purchased.</div>
+
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+
 
 </div>
 {% endblock %}
