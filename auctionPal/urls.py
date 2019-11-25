@@ -12,7 +12,7 @@ from carts.views import cart_home
 from billing.views import payment_method_view, payment_method_createview
 from bids.views import bid_list, bid_new
 from addresses.views import checkout_address
-from reviews.views import review_list, review_new
+from reviews.views import review_list, review_new, review_edit
 
 urlpatterns = [
     url(r'^$', index, name='index'),
@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'bids/$', bid_list, name='bids'),
     url(r'reviews/$', review_list, name='reviews'),
     url(r'reviews/new/(?P<pk>\d+)/$', review_new, name='review_new'),
+    url(r'reviews/edit/(?P<pk>\d+)/$', review_edit, name='review_edit'),
     url(r'mycart/$', cart_home, name='cart'),
     url(r'cart/', include("carts.urls", namespace='cart')),
     url(r'billing/payment-method/$', payment_method_view,
