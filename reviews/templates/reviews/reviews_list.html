@@ -23,11 +23,11 @@
             </div>
             {% endfor %}
         </div>
-        <div class="col-md-5">
-            <h1>Add/Edit review for:</h1>
+        <div class="jumbotron col-md-5">
+            <h3>Review your purchased items:</h3>
 
             {% for artifact in artifacts %}
-            <a href="{% url 'review_new' pk=artifact.pk %}">{{artifact.title}}</a>
+            <p><a href="{% url 'review_new' pk=artifact.pk %}">{{artifact.title}}</a></p>
 
             {% empty %}
             <div>Sorry! No items purchased.</div>

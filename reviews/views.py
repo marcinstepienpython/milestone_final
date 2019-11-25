@@ -5,8 +5,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Review
 from auctionPal.forms import ReviewForm
 from artifacts.models import Artifact
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='/login/')
 def review_list(request):
     reviews = Review.objects.all().order_by('-id')
     context = {

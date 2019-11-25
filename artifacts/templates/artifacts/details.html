@@ -59,6 +59,8 @@
         <p>{{ bid.offer }} € </p>
         {% endif %}
         {% endif %}
+        {% empty %}
+        <p>Sorry! No bids so far.</p>
         {% endfor %}
       </div>
 

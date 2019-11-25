@@ -4,6 +4,9 @@
     <div>
         {% for bid in bids %}
         <p>{{bid.user}} offered {{bid.offer}} for {{ bid }}</p>
+        {% empty %}
+        <div>Sorry! No bids so far.</div>
+
         {% endfor %}
     </div>
 </div>
