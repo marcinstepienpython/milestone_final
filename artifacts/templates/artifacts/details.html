@@ -4,9 +4,25 @@
   <h1>{{ artifact.title }}</h1>
 
   {% if artifact.image %}
-  <div class="jumbotron">
-    <img src="{{ artifact.image.url }}" class="img-fluid" />
+
+  <div class="btn-group">
+    <button type="button" class='btn btn-outline-secondary btn-sm' onclick="zoomin()">
+      Zoom-In
+    </button>
+
+    <button type="button" class='btn btn-outline-secondary btn-sm' onclick="zoomout()">
+      Zoom-Out
+    </button>
   </div>
+
+</div>
+
+
+
+<div class="container ">
+  <img src="{{ artifact.image.url }}" id='art' width='400px' class='mb-3' />
+
+
   {% endif %}
 
   <h3>Description</h3>
@@ -65,5 +81,19 @@
 </div>
 
 
+
+<script type="text/javascript">
+  function zoomin() {
+    var GFG = document.getElementById("art");
+    var currWidth = GFG.clientWidth;
+    GFG.style.width = (currWidth + 100) + "px";
+  }
+
+  function zoomout() {
+    var GFG = document.getElementById("art");
+    var currWidth = GFG.clientWidth;
+    GFG.style.width = (currWidth - 100) + "px";
+  } 
+</script>
 
 {% endblock %}
