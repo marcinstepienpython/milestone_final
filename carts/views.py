@@ -15,7 +15,7 @@ from addresses.models import Address
 
 def cart_create(user=None):
     cart_obj = Cart.objects.create(user=None)
-    # print('New Cart created!')
+    
     return cart_obj
 
 
@@ -37,7 +37,7 @@ def cart_update(request):
             cart_obj.artifacts.remove(artifact_obj)
         else:
             cart_obj.artifacts.add(artifact_obj)
-    # return redirect(artifact_obj.get_url())
+    
     return redirect('cart:home')
 
 
@@ -47,8 +47,7 @@ def checkout_home(request):
     if cart_created or cart_obj.artifacts.count() == 0:
         return redirect('cart:home')
 
-    # user = request.user
-    # billing_profile = None
+    
     login_form = LoginForm()
     guest_form = GuestForm()
     address_form = AddressForm()
@@ -68,7 +67,7 @@ def checkout_home(request):
 
         if order_qs.count() == 1:
             order_obj = order_qs.first()
-            # print('2', order_obj.shipping_address)
+            
 
         else:
             old_order_qs = Order.objects.exclude(
@@ -83,13 +82,13 @@ def checkout_home(request):
 
             order_obj.shipping_address = Address.objects.get(
                 id=shipping_address_id)
-            # print('order_obj.shipping_address', order_obj.shipping_address)
+            
 
             # delete the session
             del request.session['shipping_address_id']
 
         if shipping_address_id:
-            # print('1', order_obj.shipping_address)
+            
             order_obj.save()
 
     if request.method == 'POST':
@@ -117,7 +116,7 @@ def checkout_home(request):
         "billing_profile": billing_profile,
         "guest_form": guest_form,
         "address_form": address_form,
-        # "billing_address_form":address_form,
+        
     }
 
     return render(request, 'carts/checkout.html', context)

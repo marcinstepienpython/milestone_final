@@ -5,6 +5,8 @@ from .models import Bid
 from artifacts.models import Artifact
 from auctionPal.forms import BidForm
 
+# get all bids
+
 
 def bid_list(request):
     bids = Bid.objects.all().order_by('-id')
@@ -12,6 +14,8 @@ def bid_list(request):
         'bids': bids
     }
     return render(request, 'bids/snippets/bids.html', context)
+
+# create a bid
 
 
 def bid_new(request, pk):

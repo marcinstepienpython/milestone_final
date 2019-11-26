@@ -5,7 +5,7 @@ from artifacts.models import Artifact
 from django.db import models
 from django.utils import timezone
 
-
+# review model
 class Review(models.Model):
     user = models.ForeignKey(User)
     artifact = models.ForeignKey(Artifact)

@@ -5,7 +5,7 @@ from django.db import models
 from django.urls import reverse
 from artifacts.models import Artifact
 
-
+# tag model
 class Tag(models.Model):
     title = models.CharField(max_length=150)
     timestamp = models.DateTimeField(auto_now_add=True)

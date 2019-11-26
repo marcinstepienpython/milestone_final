@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from artifacts.models import Artifact
 
-
+# search view as ListView
 class SearchArtifactListView(ListView):
     template_name = 'search/view.html'
 

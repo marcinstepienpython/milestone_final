@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from artifacts.models import Artifact
 
-
+# bid model
 class Bid(models.Model):
     user = models.ForeignKey(User)
     artifact = models.ForeignKey(Artifact)

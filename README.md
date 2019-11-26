@@ -1,4 +1,4 @@
-# ADART - an auction place /Django project/
+# ADART - an auction place /Django Full Stack/
 
 The project goal was to build an auction place to sell historical artifacts. External user’s goal is to find, learn about and acquire artifacts they are interested in. The goal of the site owner is earn money on selling the artifacts (the site owner is the seller)
 

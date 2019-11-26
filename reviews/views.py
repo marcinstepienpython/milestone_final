@@ -7,6 +7,8 @@ from auctionPal.forms import ReviewForm
 from artifacts.models import Artifact
 from django.contrib.auth.decorators import login_required
 
+
+# for authenticated users only
 @login_required(login_url='/login/')
 def review_list(request):
     reviews = Review.objects.all().order_by('-id')
@@ -15,14 +17,14 @@ def review_list(request):
       }
     
     if request.user:
-        print(request.user)
+        
         artifacts = Artifact.objects.filter(buyer=request.user)
         context['artifacts'] = artifacts
         
 
     return render(request, 'reviews/reviews_list.html', context)
 
-
+# create new review
 def review_new(request, pk):
     if request.method == 'POST':
         artifact = Artifact.objects.filter(pk=pk).first()
@@ -43,7 +45,7 @@ def review_new(request, pk):
         form = ReviewForm()
 
     return render(request, 'reviews/new.html', {'form': form})
-
+# edit own review
 def review_edit(request, pk):
     review = Review.objects.filter(pk=pk).first()
     if request.method == "POST":

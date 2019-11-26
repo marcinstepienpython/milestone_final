@@ -5,7 +5,7 @@ from django.db import models
 
 # Create your models here.
 
-
+# Anonymous buyer model
 class GuestEmail(models.Model):
     email = models.EmailField()
     active = models.BooleanField(default=True)

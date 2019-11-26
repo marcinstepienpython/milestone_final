@@ -17,7 +17,6 @@ def checkout_address(request):
     redirect_path = next_ or next_post or None
 
     if form.is_valid():
-        print(request.POST)
 
         instance = form.save(commit=False)
         billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(
@@ -29,7 +28,6 @@ def checkout_address(request):
             instance.save()
 
             request.session[address_type + "_address_id"] = instance.id
-            print(address_type + "_address_id")
 
         else:
             return redirect('cart:checkout')

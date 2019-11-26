@@ -1,10 +1,12 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from bids.models import Bid
-# from django.db.models import Max
+
 
 User = get_user_model()
 
+
+# Anonymous buyer form
 class GuestForm(forms.Form):
         email = forms.EmailField(widget=forms.EmailInput(
         attrs={'class': 'form-control', "placeholder": "Email", "id": "form_email"}))
@@ -26,6 +28,7 @@ class RegisterForm(forms.Form):
     password2 = forms.CharField(
         label='Confirm password', widget=forms.PasswordInput(attrs={"class": 'form-control', "placeholder": "Password", "id": "form_password"}))
 
+    # check if username and email are available
     def clean_username(self):
         username = self.cleaned_data.get('username')
         qs = User.objects.filter(username=username)

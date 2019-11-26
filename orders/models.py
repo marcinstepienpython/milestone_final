@@ -8,7 +8,7 @@ from django.db.models.signals import post_save
 from billing.models import BillingProfile
 # Create your models here.
 
-
+# order model
 class Order(models.Model):
     billing_profile = models.ForeignKey(BillingProfile, null=True, blank=True)
     shipping_address = models.ForeignKey(

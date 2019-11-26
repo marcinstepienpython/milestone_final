@@ -8,7 +8,7 @@ from .models import Artifact
 from carts.models import Cart
 from bids.models import Bid
 
-
+# list all featured artifacts
 class ArtifactFeaturedListView(ListView):
     template_name = 'artifacts/list.html'
 
@@ -16,7 +16,7 @@ class ArtifactFeaturedListView(ListView):
         request = self.request
         return Artifact.objects.all().featured()
 
-
+# featured artifact detailed view
 class ArtifactFeaturedDetailView(DetailView):
     template_name = 'artifacts/featured-details.html'
 
@@ -24,7 +24,7 @@ class ArtifactFeaturedDetailView(DetailView):
         request = self.request
         return Artifact.objects.all().featured()
 
-
+# list all artifacts
 class ArtifactListView(ListView):
     template_name = 'artifacts/list.html'
 
@@ -32,7 +32,7 @@ class ArtifactListView(ListView):
         request = self.request
         return Artifact.objects.all()
 
-
+# artifact detailed view
 class ArtifactDetailView(DetailView):
     # queryset = Artifact.objects.all()
     template_name = 'artifacts/details.html'
