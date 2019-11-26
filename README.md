@@ -1,8 +1,8 @@
-# ADART
+# ADART - an auction place /Django project/
 
-Project idea was to build a website for a rock band. The webpage contains info about the group, band members and upcoming events. The visitors have an opportunity to book the band for a private show, book tickets for live preformances and buy all currently available albums.
+The project goal was to build an auction place to sell historical artifacts. External user’s goal is to find, learn about and acquire artifacts they are interested in. The goal of the site owner is earn money on selling the artifacts (the site owner is the seller)
 
-![alt text](https://)
+![alt text](https://github.com/marcinstepienpython/milestone_final/blob/master/static_cdn/static_root/img/adart.png)
 
 The website is available here: 
 

@@ -20,7 +20,7 @@
 
 
 <div class="container ">
-  <img src="{{ artifact.image.url }}" id='art' width='400px' class='mb-3' />
+  <img src="{{ artifact.image.url }}" id='art' width='330px' class='mb-3' />
 
 
   {% endif %}
@@ -34,7 +34,8 @@
   <p>{{ artifact.year }}</p>
   <h3>Origin</h3>
   <p>{{ artifact.origin }}</p>
-  <!-- <p>Image width: {{ artifact.image.width }}</p> -->
+  <h3>Artifact's history</h3>
+  <p>{{ artifact.history }}</p>
 </div>
 
 <div class="container">

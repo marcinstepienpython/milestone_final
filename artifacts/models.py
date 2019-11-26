@@ -64,6 +64,7 @@ class Artifact(models.Model):
     title = models.CharField(max_length=120)
     slug = models.SlugField(blank=True)
     description = models.TextField()
+    history = models.TextField(null=True, blank=True)
     min_price = models.DecimalField(decimal_places=2, max_digits=20, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=20, null=True)
     deadline = models.DateTimeField()
@@ -95,19 +96,3 @@ class Artifact(models.Model):
         return self.buyer
 
 
-# class Bid(models.Model):
-#     auction = models.ForeignKey(Artifact)
-#     user = models.ForeignKey(User)
-#     amount = models.DecimalField(decimal_places=2, max_digits=20, default=0.50)
-
-#     def __str__(self):
-#         return self.amount
-
-
-# class Comment(models.Model):
-#     auction = models.ForeignKey(Artifact)
-#     user = models.ForeignKey(User)
-#     comment = models.TextField()
-
-#     def __str__(self):
-#         return self.comment
