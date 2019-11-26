@@ -15,7 +15,7 @@ from addresses.views import checkout_address
 from reviews.views import review_list, review_new, review_edit
 
 urlpatterns = [
-    url(r'^$', index, name='index'),
+    url(r'^$', ArtifactListView.as_view(), name='index'),
     url(r'login/$', login_page, name='login'),
     url(r'register/guest/$', guest_register_view, name='guest_register'),
     url(r'logout/$', LogoutView.as_view(), name='logout'),

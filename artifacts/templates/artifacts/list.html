@@ -1,20 +1,20 @@
 {% extends 'base.html' %} {% block content%}
-<div class="container ">
+<div class="container mt-3">
   <h1>List of artifacts:</h1>
   <div class="row justify-content-around ">
     {% for artifact in object_list %}
     <div class="col">
-      <div class="card" style="width: 18rem;">
+      <div class="card mt-3" style="width: 18rem;">
         {% if artifact.image %}
-        <img src="{{ artifact.image.url }}" class="card-img-top" alt="..." />
+        <img src="{{ artifact.image.url }}" class="card-img-top p-3" alt="..." />
         {% endif %}
-        <div class="card-body">
+        <div class="card-body" style="height: 20rem;">
           <h5 class="card-title">{{ artifact.title }}</h5>
           <p class="card-text">
             {{ artifact.description }}
           </p>
           <p class="card-text">
-            Buy now: {{ artifact.price }} $
+            Buy now: €{{ artifact.price }}
           </p>
           <a href="{{ artifact.get_url }}" class="btn btn-primary">Details</a>
         </div>

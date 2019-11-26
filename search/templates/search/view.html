@@ -14,9 +14,9 @@
     <div class="col">
       <div class="card" style="width: 18rem;">
         {% if artifact.image %}
-        <img src="{{ artifact.image.url }}" class="card-img-top" alt="..." />
+        <img src="{{ artifact.image.url }}" class="card-img-top p-3" alt="..." />
         {% endif %}
-        <div class="card-body">
+        <div class="card-body" style="height: 20rem;">
           <h5 class="card-title">{{ artifact.title }}</h5>
           <p class="card-text">
             {{ artifact.description }}

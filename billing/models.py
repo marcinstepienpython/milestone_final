@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import os
+import env
 from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save, pre_save
@@ -7,8 +9,9 @@ from accounts.models import GuestEmail
 
 User = settings.AUTH_USER_MODEL
 
-import stripe 
-stripe.api_key = 'sk_test_0B3fJfkQVP9QjRIKejUSPsXZ00d2j5pJT2'
+import stripe
+ 
+stripe.api_key = os.getenv('STRIPE_SECRET')
 
 
 class BillingProfileManager(models.Manager):

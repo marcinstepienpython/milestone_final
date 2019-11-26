@@ -4,9 +4,12 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from billing.models import BillingProfile, Card
 import stripe
+import os
+import env
 
-stripe.api_key = 'sk_test_0B3fJfkQVP9QjRIKejUSPsXZ00d2j5pJT2'
-STRIPE_PUB_KEY = 'pk_test_fpcyXSS2P3x8EvV4rA9hTheC004wTnx3KO'
+stripe.api_key = os.getenv('STRIPE_SECRET')
+STRIPE_PUB_KEY = os.getenv('STRIPE_PUB_KEY')
+
 
 
 def payment_method_view(request):

@@ -65,7 +65,6 @@ def checkout_home(request):
 
         order_obj, order_object_created = BillingProfile.objects.new_or_get(
             request)
-        
 
         if order_qs.count() == 1:
             order_obj = order_qs.first()
@@ -79,16 +78,16 @@ def checkout_home(request):
 
             order_obj = Order.objects.create(
                 billing_profile=billing_profile, cart=cart_obj)
-        
+
         if shipping_address_id:
-    
+
             order_obj.shipping_address = Address.objects.get(
                 id=shipping_address_id)
             # print('order_obj.shipping_address', order_obj.shipping_address)
-            
+
             # delete the session
             del request.session['shipping_address_id']
-        
+
         if shipping_address_id:
             # print('1', order_obj.shipping_address)
             order_obj.save()
@@ -99,17 +98,19 @@ def checkout_home(request):
             charged, charge_message = billing_profile.charge(order_obj)
             if charged:
                 order_obj.mark_paid()
-                
+
                 for artifact_obj in cart_obj.artifacts.all():
                     artifact_obj.set_status()
-                    artifact_obj.set_buyer(request.user)
+                    try:
+                        artifact_obj.set_buyer(request.user)
+                    except:
+                        print('Anonymous buyer.')
                 del request.session['cart_id']
                 return redirect('cart:success')
             else:
-               
+
                 print(charge_message)
                 return redirect("/billing/payment-method/")
-            
 
     context = {
         "object": order_obj,
@@ -120,6 +121,7 @@ def checkout_home(request):
     }
 
     return render(request, 'carts/checkout.html', context)
+
 
 def checkout_done_view(request):
     return render(request, 'carts/checkout-done.html', {})
