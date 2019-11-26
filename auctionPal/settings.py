@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'billing',
     'addresses',
     'reviews',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +81,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'auctionPal.wsgi.application'
 
