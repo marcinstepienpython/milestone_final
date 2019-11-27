@@ -51,7 +51,7 @@ paramiko==2.0.0
 pexpect==4.2.1
 Pillow==6.2.1
 pluggy==0.6.0
-psycopg2-binary==2.8.4
+psycopg2==2.8.4
 py==1.5.2
 pyasn1==0.4.2
 pycairo==1.16.2
