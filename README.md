@@ -118,11 +118,13 @@ Layout:
 
 ## Deployment
 
-The Application has been deployed to GitHub Pages. There is no difference between development and production version of the system. No environemnt variables have been used.
+The application has been deployed to heroku.
 
-Deployment log:
-
-- c98ad8d was deployed by GitHub Pages
+Deployment process:
+1. Created production environment
+2. Created requirements.txt file
+3. Created free heroku account (https://heroku.com)
+4. 
 
 The application is available here: 
 
