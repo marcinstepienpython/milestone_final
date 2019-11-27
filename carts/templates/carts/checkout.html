@@ -3,8 +3,10 @@
 
 {% if not billing_profile %}
 <div class="jumbotron">
-    <p>Login</p>
-    <p>Continue as Guest</p>
+    <p>Already registered?</p>
+    <a class="btn btn-info mb-5" href="/login/">Login</a>
+
+    <p>Let me buy this item without registration</p>
     {% url 'guest_register' as guest_register_url %}
     {% include 'accounts/snippets/form.html' with form=guest_form action_url=guest_register_url %}
 </div>
