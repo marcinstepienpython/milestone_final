@@ -2,13 +2,35 @@
 <!-- {{order.id}} -- {{ object.cart }} -->
 
 {% if not billing_profile %}
-<div class="jumbotron">
-    <p>Already registered?</p>
-    <a class="btn btn-info mb-5" href="/login/">Login</a>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron">
+                <h3>Already registered?</h3>
+                <a class="btn btn-info mb-5" href="/login/">Login</a>
+            </div>
+        </div>
 
-    <p>Let me buy this item without registration</p>
-    {% url 'guest_register' as guest_register_url %}
-    {% include 'accounts/snippets/form.html' with form=guest_form action_url=guest_register_url %}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron">
+
+                <h3>Quick buy</h3>
+                {% url 'guest_register' as guest_register_url %}
+                {% include 'accounts/snippets/form.html' with form=guest_form action_url=guest_register_url %}
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 </div>
 
 
