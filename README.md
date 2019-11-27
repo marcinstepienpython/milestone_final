@@ -127,9 +127,10 @@ Deployment process:
 4. Login to heroku using CLI
 5. Create a new app using: heroku create adart
 6. Created Procfile
-7. Installing necessery libs: pip install psycopg2-binary dj-database-url gunicorn
+7. Installing necessary libs: pip install psycopg2-binary dj-database-url gunicorn
 8. Created runtime.txt (Python version)
-9. 
+9. Created heroku database with: heroku addons:create heroku-postgresql:hobby-dev
+10. 
 
 
 
