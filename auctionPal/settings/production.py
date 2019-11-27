@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'addresses',
     'reviews',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -153,6 +154,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", "static_root")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
+
+from auctionPal.aws.conf import *
 
 # Preparation for SSL/TLS https
 

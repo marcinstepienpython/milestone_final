@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'addresses',
     'reviews',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -146,15 +148,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", "static_root")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
+from auctionPal.aws.conf import *
 
 # http/https
 
-CORS_REPLACE_HTTPS_REFERER      = False
-HOST_SCHEME                     = "http://"
-SECURE_PROXY_SSL_HEADER         = None
-SECURE_SSL_REDIRECT             = False
-SESSION_COOKIE_SECURE           = False
-CSRF_COOKIE_SECURE              = False
-SECURE_HSTS_SECONDS             = None
-SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
-SECURE_FRAME_DENY               = False
+CORS_REPLACE_HTTPS_REFERER = False
+HOST_SCHEME = "http://"
+SECURE_PROXY_SSL_HEADER = None
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_HSTS_SECONDS = None
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_FRAME_DENY = False
+
+AWS_GROUP_NAME = 'adart-group'
+AWS_USERNAME = 'marcinstepienpython'
+AWS_ACCESS_KEY_ID = 'AKIA3JDTWWPPNS72QWQZ'
+AWS_SECRET_KEY = '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'

@@ -8,7 +8,7 @@ The website is available here: https://adart.herokuapp.com/
 
 ## UX
 
-The Monkees website is a simple design consising of three sections.
+The adart auction place is a simple design portal consisting of:
 
 THE LAYOUT:
 
@@ -121,6 +121,8 @@ Layout:
 The application has been deployed to heroku.
 
 Deployment process:
+
+Heroku
 1. Created production environment
 2. Created requirements.txt file
 3. Created free heroku account (https://heroku.com)
@@ -136,6 +138,14 @@ Deployment process:
 12. Then heroku run bash / python manage.py migrate
 13. Create superuser
 14. as a result: heroku open
+
+AWS (static files):
+1. Created AWS account
+2. Created user, policy and group
+3. Created bucket
+4. Django configuration: pip install boto3 django-storages boto
+5. Creating asw folder, __init__.py, utils.py
+6. 
 
 
 
