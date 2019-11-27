@@ -124,9 +124,16 @@ Deployment process:
 1. Created production environment
 2. Created requirements.txt file
 3. Created free heroku account (https://heroku.com)
-4. 
+4. Login to heroku using CLI
+5. Create a new app using: heroku create adart
+6. Created Procfile
+7. Installing necessery libs: pip install psycopg2-binary dj-database-url gunicorn
+8. Created runtime.txt (Python version)
+9. 
 
-The application is available here: 
+
+
+The application is available here: https://adart.herokuapp.com/
 
 Deployment issues:
 
