@@ -131,7 +131,7 @@ Deployment process:
 8. Created runtime.txt (Python version)
 9. Created heroku database with: heroku addons:create heroku-postgresql:hobby-dev
 10. Updated production.py with posgreSQL db on heroku
-11. 
+11. Disabling static files: heroku config:set DISABLE_COLLECTSTATIC=1
 
 
 
