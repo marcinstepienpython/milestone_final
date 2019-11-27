@@ -130,7 +130,8 @@ Deployment process:
 7. Installing necessary libs: pip install psycopg2-binary dj-database-url gunicorn
 8. Created runtime.txt (Python version)
 9. Created heroku database with: heroku addons:create heroku-postgresql:hobby-dev
-10. 
+10. Updated production.py with posgreSQL db on heroku
+11. 
 
 
 
