@@ -11,7 +11,8 @@ User = settings.AUTH_USER_MODEL
 
 import stripe
  
-stripe.api_key = os.getenv('STRIPE_SECRET')
+stripe.api_key = os.environ.get('STRIPE_SECRET')
+STRIPE_PUB_KEY = os.environ.get('STRIPE_PUB_KEY')
 
 
 class BillingProfileManager(models.Manager):

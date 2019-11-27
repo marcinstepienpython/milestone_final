@@ -7,13 +7,12 @@ import stripe
 import os
 import env
 
-stripe.api_key = os.getenv('STRIPE_SECRET')
-STRIPE_PUB_KEY = os.getenv('STRIPE_PUB_KEY')
+stripe.api_key = os.environ.get('STRIPE_SECRET')
+STRIPE_PUB_KEY = os.environ.get('STRIPE_PUB_KEY')
 
 
 # payment method view
 def payment_method_view(request):
-
 
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(
         request)
@@ -27,6 +26,8 @@ def payment_method_view(request):
     return render(request, 'billing/payment-method.html', {"publish_key": STRIPE_PUB_KEY})
 
 # create card view
+
+
 def payment_method_createview(request):
     if request.method == "POST":
         billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(
@@ -38,8 +39,8 @@ def payment_method_createview(request):
         token = request.POST.get('token')
 
         if token is not None:
-            
+
             new_card_obj = Card.objects.add_new(billing_profile, token)
-            
+
         return JsonResponse({'message': 'Success! Card added!'})
     return HttpResponse("error", status_code=401)
