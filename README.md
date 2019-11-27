@@ -145,7 +145,8 @@ AWS (static files):
 3. Created bucket
 4. Django configuration: pip install boto3 django-storages boto
 5. Creating asw folder, __init__.py, utils.py
-6. 
+6. Importing AWS confids into settings
+7. Run python manage.py collectstatic
 
 
 
