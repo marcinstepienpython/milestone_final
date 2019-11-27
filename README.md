@@ -145,8 +145,10 @@ AWS (static files):
 3. Created bucket
 4. Django configuration: pip install boto3 django-storages boto
 5. Creating asw folder, __init__.py, utils.py
-6. Import aws config into settings
-7. Execute: run python manage.py collectstatic
+6. 
+
+
+
 
 The application is available here: https://adart.herokuapp.com/
 

@@ -7,8 +7,8 @@ import stripe
 import os
 import env
 
-stripe.api_key = os.environ.get('STRIPE_SECRET')
-STRIPE_PUB_KEY = os.environ.get('STRIPE_PUB_KEY')
+stripe.api_key = os.getenv('STRIPE_SECRET')
+STRIPE_PUB_KEY = os.getenv('STRIPE_PUB_KEY')
 
 
 # payment method view

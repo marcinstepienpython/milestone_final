@@ -1,11 +1,8 @@
 import datetime
-import os
-
 AWS_GROUP_NAME = 'adart-group'
 AWS_USERNAME = 'marcinstepienpython'
-AWS_ACCESS_KEY_ID = os.environ.get(AWS_ACCESS_KEY_ID)
-AWS_SECRET_ACCESS_KEY = os.environ.get(AWS_SECRET_ACCESS_KEY)
-
+AWS_ACCESS_KEY_ID = "AKIA3JDTWWPPNS72QWQZ"
+AWS_SECRET_ACCESS_KEY = "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"
 
 AWS_FILE_EXPIRE = 200
 AWS_PRELOAD_METADATA = True
