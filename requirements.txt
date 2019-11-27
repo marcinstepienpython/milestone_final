@@ -43,48 +43,48 @@ mechanize==0.2.5
 mercurial==4.5.3
 msgpack==0.5.6
 # mysql-connector-python==2.1.6
-mysql-utilities==1.6.4
-netifaces==0.10.4
-numpy==1.13.3
+# mysql-utilities==1.6.4
+# netifaces==0.10.4
+# numpy==1.13.3
 olefile==0.45.1
-paramiko==2.0.0
-pexpect==4.2.1
+# paramiko==2.0.0
+# pexpect==4.2.1
 Pillow==6.2.1
 pluggy==0.6.0
 psycopg2==2.8.4
-py==1.5.2
-pyasn1==0.4.2
-pycairo==1.16.2
-pycparser==2.19
-pycrypto==2.6.1
-pyflakes==1.6.0
-Pygments==2.2.0
-pygobject==3.26.1
-pylint==1.8.3
-pyodbc==4.0.17
-pyOpenSSL==19.1.0
-pyparsing==2.2.0
-pysqlite==2.7.0
-pytest==3.3.2
-python-dateutil==2.6.1
+# py==1.5.2
+# pyasn1==0.4.2
+# pycairo==1.16.2
+# pycparser==2.19
+# pycrypto==2.6.1
+# pyflakes==1.6.0
+# Pygments==2.2.0
+# pygobject==3.26.1
+# pylint==1.8.3
+# pyodbc==4.0.17
+# pyOpenSSL==19.1.0
+# pyparsing==2.2.0
+# pysqlite==2.7.0
+# pytest==3.3.2
+# python-dateutil==2.6.1
 pytz==2019.3
-pyxdg==0.25
-PyYAML==3.12
-regex==2017.12.12
-repoze.lru==0.7
+# pyxdg==0.25
+# PyYAML==3.12
+# regex==2017.12.12
+# repoze.lru==0.7
 requests==2.22.0
-Routes==2.4.1
+# Routes==2.4.1
 # SecretStorage==2.3.1
-simplejson==3.13.2
-singledispatch==3.4.0.3
-six==1.13.0
+# simplejson==3.13.2
+# singledispatch==3.4.0.3
+# six==1.13.0
 stripe==2.40.0
 urllib3==1.25.7
-uTidylib==0.3
-virtualenv==15.1.0
-webencodings==0.5
-WebOb==1.7.3
-Werkzeug==0.15.6
-wrapt==1.9.0
+# uTidylib==0.3
+# virtualenv==15.1.0
+# webencodings==0.5
+# WebOb==1.7.3
+# Werkzeug==0.15.6
+# wrapt==1.9.0
 # WTForms==2.2.1
-yapf==0.20.1
+# yapf==0.20.1
