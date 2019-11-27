@@ -4,7 +4,7 @@ The project goal was to build an auction place to sell historical artifacts. Ext
 
 ![alt text](https://github.com/marcinstepienpython/milestone_final/blob/master/static_cdn/static_root/img/adart.png)
 
-The website is available here: 
+The website is available here: https://adart.herokuapp.com/
 
 ## UX
 
@@ -133,6 +133,9 @@ Deployment process:
 10. Updated production.py with posgreSQL db on heroku
 11. Disabling static files: heroku config:set DISABLE_COLLECTSTATIC=1
 11. Sending files to heroku: git push heroku master
+12. Then heroku run bash / python manage.py migrate
+13. Create superuser
+14. as a result: heroku open
 
 
 
