@@ -8,6 +8,8 @@ from django.utils.http import is_safe_url
 from .models import GuestEmail
 
 # Anonymous buyer form
+
+
 def guest_register_view(request):
     form = GuestForm(request.POST or None)
     context = {
@@ -22,7 +24,7 @@ def guest_register_view(request):
         new_guest_email = GuestEmail.objects.create(email=email)
         request.session['guest_email_id'] = new_guest_email.id
         if is_safe_url(redirect_path, request.get_host()):
-            
+
             return redirect(redirect_path)
         else:
             return redirect('/cart/checkout/')
@@ -43,22 +45,24 @@ def login_page(request):
 
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
+        print(username)
         user = authenticate(request, username=username, password=password)
+        print('user', user)
 
         if user is not None:
             login(request, user)
             try:
                 del request.session['guest_email_id']
             except:
-                pass    
+                pass
             if is_safe_url(redirect_path, request.get_host()):
-                
+
                 return redirect(redirect_path)
             else:
                 return redirect('/')
         else:
             # Return an 'invalid login' error message.
-            print('Error')
+            print('koniec: ', user)
 
     return render(request, 'accounts/login.html', context)
 
@@ -72,7 +76,7 @@ def register_page(request):
         "form": form
     }
     if form.is_valid():
-        
+
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         email = form.cleaned_data.get('email')
