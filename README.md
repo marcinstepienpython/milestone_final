@@ -95,6 +95,11 @@ The site has been created using:
 
 ## Testing
 
+test user: 
+login: user_test
+password: karolina1
+
+
 Basic set-up:
 
 1. Added boostrap framework and tested by creating simple container and jumbotron classes.
