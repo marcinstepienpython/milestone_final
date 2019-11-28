@@ -1,6 +1,6 @@
 from auctionPal.aws.conf import *
 import dj_database_url
-import django_heroku
+
 """
 Django settings for auctionPal project.
 
@@ -169,6 +169,3 @@ CSRF_COOKIE_SECURE = False
 SECURE_HSTS_SECONDS = None
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SECURE_FRAME_DENY = False
-
-
-django_heroku.settings(locals())
