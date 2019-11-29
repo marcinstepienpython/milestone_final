@@ -33,9 +33,8 @@ Site owner
 Bids:
 - we have only basic functionality of bids (addig and showing the bids). The next iteration will introduce logic to disable items with highest bids etc.
 
-
-
-
+Emails:
+- Introduction of confirmation emails.
 
 ## UX
 
@@ -157,7 +156,7 @@ As a LOGGED_IN_USER,
 
 As an ANONYMOUS_USER: 
 1. I want to buy item without registration => checked
-2. 
+2. I want to register => checked
 
 ## Deployment
 
@@ -198,6 +197,7 @@ The deployed application is available on: https://adart.herokuapp.com/
 Deployment issues:
 
 - Secure connection on iOS. There are some security inssues with Apple platform.
+
 
 ### Content
 
