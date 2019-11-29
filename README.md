@@ -6,59 +6,79 @@ The project goal was to build an auction place to sell historical artifacts. Ext
 
 The website is available here: https://adart.herokuapp.com/
 
+## Features
+
+The website provides a functionality to search, bid, buy and review historical artifacts.
+
+### Existing Features
+
+The application gives users a possibility to:
+
+Visitors:
+
+- browse items
+- serch for items
+- make bids on items (registered users)
+- buy items ( integration with Stripe payments)
+- review purchased items (registered users)
+
+Site owner
+ - add items (admin panel)
+ - add tags => eg. furniture, paintings, new, trending, discounted etc
+ - see orders, anonymous buyers, billing, addresses
+ - manage users (admin panel)
+
+### Features Left to Implement
+
+Bids:
+- we have only basic functionality of bids (addig and showing the bids). The next iteration will introduce logic to disable items with highest bids etc.
+
+
+
+
+
 ## UX
 
 The adart auction place is a simple design portal consisting of:
 
 THE LAYOUT:
 
+
 - MAIN NAVIGATION:
-
+  (Anonymous user)
   - User will have a possibiliy to navigate to:
-    - The Monkees => index.html
-    - The Band => band.html (info about the band and samples od music/video)
-    - News => news.html (info about current chenages and news about the band)
-    - Concerts => concerts.html (info about coming live shows and links to buying tickets)
-    - Book a Show => book.html (form to book the band for a private show)
-    - Shop => shop.html (links to amazon.com where users may acquire band's albums)
-
-- DISPLAY SECTION:
-
-  - Displaying main content of given sub-page => eg. news, book form, concerts dates and tickets links.
-
-- SOCIAL LINKS:
-
-  - Displaying links to all social platforms related to the band (facebook, instagram, twitter).
-
-USER STORIES:
-
-As a < type of user >, I want < some goal > so that < some reason >.
-
-1. Buy tickets: visitors can see 'buy tickets' link right on the main page. Apart from 'news' buying tickets will be the most frequent action on the page. Users have also special section dedicated to buying tickets for upcomming events.
+    - Artifacts -> List of all available artifacts
+    - Featured -> List of artifacts featured by site owner
+    - Bids -> List of bids placed by regitered users
+    - Search 
+    - Cart
+    - Login/Register
+  
+  (Authenticated user)
+  - User will have a possibiliy to navigate to:
+    - Artifacts
+    - Featured
+    - Bids
+    - Reviews -> List of reviews. Authenticated users can create new reviews (however only on items         they have purchased).
+    - Search
+    - Logout
 
 
+- MAIN SECTION:
+  /artifacts/
+    - Displaying cards of artifacts (img, title, description and 'details' button)
+  /featured/
+  - Displaying cards of featured artifacts (img, title, description and 'details' button)
+  /bids/
+  - List of bids (ordered by date)
+  /reviews/
+  - Displaying cards of reviewed artifacts (img, title, description and 'details' button)
+  - Displaying section "Review your purchased items"
+  /cart/
+  - Displaying purchase section /items => address => payment method => payment => success page/
+  /login/register/
+  - Displaying login/register forms
 
-## Features
-
-The website makes it easy for visitors to purchase tickets, albums and book the band for private shows. The info about the band and news are also accessible.
-
-### Existing Features
-
-The website sections and subpages:
-
-- Showcase photos, audio and video clips from the band's catalog.
-- Publicise the band's upcoming shows and/or availability to perform at events such as weddings and corporate parties.
-- Provide links to external resources, such as the band's social media profiles (can point anywhere at all).
-
-### Features Left to Implement
-
-Shop:
-
-- It would be a good idea to implement own shop, where vistors might purchase band's related products (t-shirts, posters, dvds).
-
-Calendar:
-
-- Implementation of a booking system where visitors might find open time spots for possible private shows.
 
 ## Technologies Used
 
@@ -85,6 +105,10 @@ HolidayPal uses following frameworks:
 - [Django](https://https://www.djangoproject.com/)
   - The project uses **Django** as a web framework.
 
+- [AWS](https://aws.amazon.com)
+  - The project uses **AWS** for static files storage.
+
+
 The site has been created using:
 
 - Django
@@ -95,31 +119,45 @@ The site has been created using:
 
 ## Testing
 
-test user: 
-login: user_test
-password: karolina1
-
-
-Basic set-up:
-
-1. Added boostrap framework and tested by creating simple container and jumbotron classes.
-2. Added google fonts and tested Fixed the '|' issues in rel link.
-
 Layout:
 
 1. Testing site responsiveness:
 
    - google developer tools:
      - site has been tested on all available devices (Galaxy, iPhone, iPad)
-   - mobile phones (Huawei P8, iPhone 8, iPhone 6)
+   - Firefox, Chrome, Edge, Safari
+   - mobile phones (Huawei P8, iPhone 8, iPhone 6, iPhone 7)
    - tablets (Samsung Galaxy Tab)
 
-2. Validators
-   The page has been validated using the following tools:
+2. HTML Validator
+   The page has been validated using the following tool:
 
-- (html) https://validator.w3.org/ => resulted in: Document checking completed. No errors or warnings to show.
-- (html) https://html5.validator.nu/ => resulted in: The document is valid HTML5 + ARIA + SVG 1.1 + MathML 2.0 (subject to the utter previewness of this service).
-- (css) https://jigsaw.w3.org/css-validator/ => resulted in: 
+   https://validator.w3.org/nu/?doc=https%3A%2F%2Fadart.herokuapp.com%2F resulted in
+
+
+Functionality:
+
+USER SCENARIOS:
+
+As a SITE_OWNER:, 
+1. I want to add new artifact => checked
+2. I want to delete/edit artifact => checked
+3. I want to create/edit/delete user => checked
+4. I want to add/edit/delete tag ==> checked ('trending')
+5. I want to see anonymous users email after purchase => checked
+
+As a LOGGED_IN_USER,
+1. I want to make a bid => checked
+2. I want to add review after I purchased an item => checked
+3. I want to add/remove item to my cart => checked
+4. I want to add payment method => checked
+5. I want to add shipping addres => checked
+6. I want to make the payment => checked
+
+
+As an ANONYMOUS_USER: 
+1. I want to buy item without registration => checked
+2. 
 
 ## Deployment
 
@@ -145,27 +183,41 @@ Heroku
 14. as a result: heroku open
 
 AWS (static files):
-1. Created AWS account
+1. Created AWS account (https://aws.amazon.com)
 2. Created user, policy and group
 3. Created bucket
 4. Django configuration: pip install boto3 django-storages boto
 5. Creating asw folder, __init__.py, utils.py
 6. Importing AWS confids into settings
 7. Run python manage.py collectstatic
+8. Changing the SECURITY_KEYS for production
 
 
-
-
-The application is available here: https://adart.herokuapp.com/
+The deployed application is available on: https://adart.herokuapp.com/
 
 Deployment issues:
 
-- 
+- Secure connection on iOS. There are some security inssues with Apple platform.
 
 ### Content
 
-The page uses information found on Wikipedia. It applies to the section about band history. All the info has been copied from Wikipedia.
+The page uses information and images found on Wikipedia.
 
-### Media
+### Project summary
+
+1. Django Full Stack Project 
+2. Multiple Apps
+3. Data Modeling (2 custome models: reviews and bids)
+4. User Authentication
+5. User Interaction (bids, reviews)
+6. Use of Stripe
+7. Structure and Navigation
+8. Use of JavaScript (ZoomIn, ZoomOut mechanism on the artifact details)
+9. Documentation: 
+10. Version Control (Git & GitHub) 
+11. Attribution
+12. Deployment (Heroku, AWS) 
+13. Security: 
+
 
 

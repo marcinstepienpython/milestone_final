@@ -44,10 +44,10 @@ Put some effort into designing a relational database schema well-suited for your
 (done) User Authentication: 
 The project should include an authentication mechanism, allowing a user to register and log in, and there should be a good reason as to why the users would need to do so. e.g., a user would have to register to persist their shopping cart between sessions (otherwise it would be lost).
 
-User Interaction: 
+(done) User Interaction: 
 Include at least one form with validation that will allow users to create and edit models in the backend (in addition to the authentication mechanism).
 
-Use of Stripe: 
+(done) Use of Stripe: 
 At least one of your Django apps should contain some e-commerce functionality using Stripe. This may be a shopping cart checkout, subscription-based payments or single payments, donations, etc. After paying successfully, the user would then gain access to additional functionality/content on the site. Note that for this project you should use Stripe's test functionality, rather than actual live payments.
 
 (done) Structure and Navigation: 
